@@ -1,6 +1,6 @@
 import axios from 'axios'
 import busboy from 'busboy'
-import { tap } from './util'
+import { tap } from '.'
 
 const FUNC = '/.netlify/functions/'
 const CONTENT_TYPES = { json: 'application/json', html: 'text/html' }
