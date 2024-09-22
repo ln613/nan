@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import { load } from 'cheerio'
 import { difference, differenceBy, flatten, union, unionBy } from 'lodash'
-import puppeteer from 'puppeteer'
+// import puppeteer from 'puppeteer'
 import { trimLeft } from './string'
 import { search, save, get } from '.'
 // import _download from 'download'
@@ -48,41 +48,41 @@ export const getArrayUrl = async (url, selectors) => {
   return getArrayHtml(html, selectors)
 }
 
-export const getNewItemsInPage = async ({
-  url,
-  id,
-  db,
-  doc,
-  selector,
-  attr,
-  mapping,
-  by,
-  path = 'items',
-}) => {
-  const saved = await search({ id, db, doc, path })
-  let all = await getAllItemsInPage(url, selector, attr)
-  if (mapping) all = all.map(eval(mapping))
-  return by ? differenceBy(all, saved, by) : difference(all, saved)
-}
+// export const getNewItemsInPage = async ({
+//   url,
+//   id,
+//   db,
+//   doc,
+//   selector,
+//   attr,
+//   mapping,
+//   by,
+//   path = 'items',
+// }) => {
+//   const saved = await search({ id, db, doc, path })
+//   let all = await getAllItemsInPage(url, selector, attr)
+//   if (mapping) all = all.map(eval(mapping))
+//   return by ? differenceBy(all, saved, by) : difference(all, saved)
+// }
 
-const getAllItemsInPage = async (url, selector, attr = 'innerText') => {
-  try {
-    const browser = await puppeteer.launch({ headless: 'new' })
-    const page = await browser.newPage()
-    await page.goto(url)
-    const data = await page.evaluate(
-      () => document.querySelector('*').outerHTML
-    )
-    console.log(data)
-    await scrollToBottom(page, selector)
-    const items = await page.$$eval(selector, links => links.map(x => x.href))
-    await browser.close()
-    return items
-  } catch (e) {
-    console.log(e)
-    return []
-  }
-}
+// const getAllItemsInPage = async (url, selector, attr = 'innerText') => {
+//   try {
+//     const browser = await puppeteer.launch({ headless: 'new' })
+//     const page = await browser.newPage()
+//     await page.goto(url)
+//     const data = await page.evaluate(
+//       () => document.querySelector('*').outerHTML
+//     )
+//     console.log(data)
+//     await scrollToBottom(page, selector)
+//     const items = await page.$$eval(selector, links => links.map(x => x.href))
+//     await browser.close()
+//     return items
+//   } catch (e) {
+//     console.log(e)
+//     return []
+//   }
+// }
 
 const scrollToBottom = async (page, selector) => {
   let y = await page.evaluate(() => window.scrollY)
