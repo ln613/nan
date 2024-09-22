@@ -23,7 +23,7 @@ export const handler = makeApi({
     },
     post: {
       extractHtml: (q, b) => getArrayHtml(b.html, b.selectors),
-      extractSaved: (q, b) => extractSaved(q.name, q.def, b.params),
+      extractSaved: (q, b) => extractSaved(q.name, q.def, b),
       // getNewItemsInPage: (q, b) => getNewItemsInPage(b),
       // saveItemsInPage: (q, b) => saveItemsInPage(b),
       // download: (q, b) => download(b),
