@@ -28,6 +28,7 @@ export const handler = makeApi({
       search: (q, b) => _search({ doc: q.doc, ...b }),
       sample: (q, b) => sample(q.doc, +b.size, b.sort),
       save: (q, b) => replace(q.doc, b),
+      flat: (q, b) => flat(q.doc, b.agg),
       // update: async (q, b) => {
       //   await connect(b.cluster, b.db)
       //   return await DB.replace(b.col, b.data)
