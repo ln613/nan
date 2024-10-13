@@ -163,10 +163,10 @@ export const sample = (doc, size, sort) =>
 
 export const add = (doc, obj) => db.collection(doc).insertMany(makeArray(obj))
 
-export const replace = async (doc, obj) => {
+export const replace = async (doc, obj, id = 'id') => {
   const list = makeArray(obj)
 
-  if (list.some(o => !o.id)) {
+  if (id === 'id' && list.some(o => !o.id)) {
     const id1 = await maxId(doc)
     const id = Math.max(...list.map(o => o.id || 0), id1) + 1
     list.filter(o => !o.id).forEach((o, i) => (o.id = id + i))
@@ -174,7 +174,7 @@ export const replace = async (doc, obj) => {
 
   await Promise.all(
     list.map(o =>
-      db.collection(doc).replaceOne({ id: o.id }, o, { upsert: true })
+      db.collection(doc).replaceOne({ [id]: o[id] }, o, { upsert: true })
     )
   )
 

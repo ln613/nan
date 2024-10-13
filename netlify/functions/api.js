@@ -19,9 +19,9 @@ export const handler = makeApi({
       test: q => Promise.resolve(clusters),
       doc: q => get(q.doc),
       count: q => count(q.doc),
-      getById: q => getById(q.doc, q.params.id),
+      getById: q => getById(q.doc, q.id),
       search: q => _search({ doc: q.doc, ...q.params }),
-      flat: q => flat(q.doc, q.params.agg),
+      flat: q => flat(q.doc, q.agg),
       maxId: q => maxId(q.doc),
     },
     post: {
