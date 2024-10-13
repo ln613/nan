@@ -173,9 +173,10 @@ export const replace = async (doc, obj, id = 'id') => {
   }
 
   await Promise.all(
-    list.map(o =>
-      db.collection(doc).replaceOne({ [id]: o[id] }, o, { upsert: true })
-    )
+    list.map(o => {
+      delete o._id
+      return db.collection(doc).replaceOne({ [id]: o[id] }, o, { upsert: true })
+    })
   )
 
   return list
