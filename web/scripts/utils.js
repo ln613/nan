@@ -6,9 +6,10 @@ import { createElement, $3 } from './html.js'
 export const isDev = false // process.env.NODE_ENV === 'development'
 
 export const LH = 'http://localhost:9000/'
-export const NF = isDev
-  ? 'http://localhost:704/.netlify/functions/'
-  : 'https://nan-li.netlify.app/.netlify/functions/'
+export const HOST = isDev
+  ? 'http://localhost:704/'
+  : 'https://nan-li.netlify.app/'
+export const NF = `${HOST}.netlify/functions/`
 
 export const extract = (url, selectors) =>
   get(`${NF}web?type=extractUrl&url=${url}&selectors=${selectors}`)

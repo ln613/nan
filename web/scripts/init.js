@@ -1,4 +1,4 @@
-// import { NF } from "./utils.js"
+import { HOST } from "./utils.js"
 
 const scripts = ['5050', 'eztv', 'javlibrary', 'kuaishou', 'music.apple', 'real-debrid', 'visualstudio', 'xsnvshen', 'youtube']
 
@@ -16,7 +16,7 @@ const load = src =>
     const container = document.head || document.body
     tag[cfg.type[0]] = cfg.type[1]
     tag.async = true
-    tag[cfg.src] = src // src.startsWith('https') ? src : `${NF}${src}`
+    tag[cfg.src] = src.startsWith('https') ? src : `${HOST}${src}`
     tag.addEventListener('load', resolve)
     container.appendChild(tag)
   })
