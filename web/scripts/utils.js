@@ -1,5 +1,5 @@
 // import { createRoot } from 'react-dom/client'
-import { createElement, $3, mapValue } from './html.js'
+import { createElement, $3 } from './html.js'
 
 // export const isSolid = process.env.fw === 'solid'
 // export const isReact = process.env.fw === 'react'
@@ -48,6 +48,13 @@ export const waitUntil = cond =>
     }
   })
 
+export const mapValue = (o, f) => {
+  const es = Object.entries(o).map(
+    ([k, v], i) => [k, f(v, k, i)]
+  )
+  return Object.fromEntries(es)
+}
+  
 export const pad0 = (n, d) => {
   const ad = Math.abs(d)
   const nl = n.toString().length
