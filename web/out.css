@@ -1,0 +1,3566 @@
+.card {
+  min-width: 42px;
+  min-height: 42px;
+  font-size: 15px;
+  overflow: hidden;
+  transition: all 0.5s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.card:not(.disabled):hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: scale(1.1);
+}
+.btn {
+  background-color: #d3d3d3;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  outline: none;
+  font-size: 15px;
+  padding: 4px 8px;
+  text-align: center;
+  user-select: none;
+  transition: all 0.3s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.btn:not(.disabled):hover {
+  background-color: #e7e7e7;
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.btn.disabled {
+  opacity: 0.5;
+}
+.txt {
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+  font-size: 15px;
+  padding: 4px 0;
+  transition: all 0.3s;
+  background-color: transparent;
+}
+.txt:focus {
+  border-bottom: 2px solid blue;
+}
+.c12 {
+  min-width: 0;
+  min-height: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c18 {
+  min-width: 0;
+  min-height: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c24 {
+  min-width: 0;
+  min-height: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c30 {
+  min-width: 0;
+  min-height: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c36 {
+  min-width: 0;
+  min-height: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c42 {
+  min-width: 0;
+  min-height: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c48 {
+  min-width: 0;
+  min-height: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c54 {
+  min-width: 0;
+  min-height: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c60 {
+  min-width: 0;
+  min-height: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c66 {
+  min-width: 0;
+  min-height: 0;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c72 {
+  min-width: 0;
+  min-height: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c78 {
+  min-width: 0;
+  min-height: 0;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c84 {
+  min-width: 0;
+  min-height: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c90 {
+  min-width: 0;
+  min-height: 0;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c96 {
+  min-width: 0;
+  min-height: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c102 {
+  min-width: 0;
+  min-height: 0;
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c108 {
+  min-width: 0;
+  min-height: 0;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c114 {
+  min-width: 0;
+  min-height: 0;
+  width: 114px;
+  height: 114px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c120 {
+  min-width: 0;
+  min-height: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 0;
+}
+.c126 {
+  min-width: 0;
+  min-height: 0;
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  padding: 0;
+}
+.w5 {
+  width: 5%;
+}
+.h5 {
+  height: 5%;
+}
+.w10 {
+  width: 10%;
+}
+.h10 {
+  height: 10%;
+}
+.w15 {
+  width: 15%;
+}
+.h15 {
+  height: 15%;
+}
+.w20 {
+  width: 20%;
+}
+.h20 {
+  height: 20%;
+}
+.w25 {
+  width: 25%;
+}
+.h25 {
+  height: 25%;
+}
+.w30 {
+  width: 30%;
+}
+.h30 {
+  height: 30%;
+}
+.w35 {
+  width: 35%;
+}
+.h35 {
+  height: 35%;
+}
+.w40 {
+  width: 40%;
+}
+.h40 {
+  height: 40%;
+}
+.w45 {
+  width: 45%;
+}
+.h45 {
+  height: 45%;
+}
+.w50 {
+  width: 50%;
+}
+.h50 {
+  height: 50%;
+}
+.w55 {
+  width: 55%;
+}
+.h55 {
+  height: 55%;
+}
+.w60 {
+  width: 60%;
+}
+.h60 {
+  height: 60%;
+}
+.w65 {
+  width: 65%;
+}
+.h65 {
+  height: 65%;
+}
+.w70 {
+  width: 70%;
+}
+.h70 {
+  height: 70%;
+}
+.w75 {
+  width: 75%;
+}
+.h75 {
+  height: 75%;
+}
+.w80 {
+  width: 80%;
+}
+.h80 {
+  height: 80%;
+}
+.w85 {
+  width: 85%;
+}
+.h85 {
+  height: 85%;
+}
+.w90 {
+  width: 90%;
+}
+.h90 {
+  height: 90%;
+}
+.w95 {
+  width: 95%;
+}
+.h95 {
+  height: 95%;
+}
+.w100 {
+  width: 100%;
+}
+.h100 {
+  height: 100%;
+}
+.w1-3 {
+  width: 33.33%;
+}
+.w2-3 {
+  width: 66.67%;
+}
+.w1-6 {
+  width: 16.66%;
+}
+.w5-6 {
+  width: 83.33%;
+}
+.w1-8 {
+  width: 12.5%;
+}
+.w3-8 {
+  width: 37.5%;
+}
+.w5-8 {
+  width: 62.5%;
+}
+.w7-8 {
+  width: 87.5%;
+}
+.w1-12 {
+  width: 8.33%;
+}
+.w5-12 {
+  width: 41.67%;
+}
+.w7-12 {
+  width: 58.33%;
+}
+.w11-12 {
+  width: 91.67%;
+}
+.fw1 {
+  font-weight: 100;
+}
+.fw2 {
+  font-weight: 200;
+}
+.fw3 {
+  font-weight: 300;
+}
+.fw4 {
+  font-weight: 400;
+}
+.fw5 {
+  font-weight: 500;
+}
+.fw6 {
+  font-weight: 600;
+}
+.fw7 {
+  font-weight: 700;
+}
+.fw8 {
+  font-weight: 800;
+}
+.fw9 {
+  font-weight: 900;
+}
+.fsi {
+  font-style: italic;
+}
+.fs6 {
+  font-size: 6px;
+}
+.fs8 {
+  font-size: 8px;
+}
+.fs10 {
+  font-size: 10px;
+}
+.fs12 {
+  font-size: 12px;
+}
+.fs15 {
+  font-size: 15px;
+}
+.fs18 {
+  font-size: 18px;
+}
+.fs21 {
+  font-size: 21px;
+}
+.fs24 {
+  font-size: 24px;
+}
+.fs30 {
+  font-size: 30px;
+}
+.fs36 {
+  font-size: 36px;
+}
+.fs42 {
+  font-size: 42px;
+}
+.fs48 {
+  font-size: 48px;
+}
+.fs64 {
+  font-size: 64px;
+}
+.fs128 {
+  font-size: 128px;
+}
+.m1 {
+  margin: 1px;
+}
+.mc1 > * {
+  margin: 1px;
+}
+.ml1 {
+  margin-left: 1px;
+}
+.mlc1 > * {
+  margin-left: 1px;
+}
+.mr1 {
+  margin-right: 1px;
+}
+.mrc1 > * {
+  margin-right: 1px;
+}
+.mt1 {
+  margin-top: 1px;
+}
+.mtc1 > * {
+  margin-top: 1px;
+}
+.mb1 {
+  margin-bottom: 1px;
+}
+.mbc1 > * {
+  margin-bottom: 1px;
+}
+.mh1 {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+.mhc1 > * {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+.mv1 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.mvc1 > * {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.m2 {
+  margin: 2px;
+}
+.mc2 > * {
+  margin: 2px;
+}
+.ml2 {
+  margin-left: 2px;
+}
+.mlc2 > * {
+  margin-left: 2px;
+}
+.mr2 {
+  margin-right: 2px;
+}
+.mrc2 > * {
+  margin-right: 2px;
+}
+.mt2 {
+  margin-top: 2px;
+}
+.mtc2 > * {
+  margin-top: 2px;
+}
+.mb2 {
+  margin-bottom: 2px;
+}
+.mbc2 > * {
+  margin-bottom: 2px;
+}
+.mh2 {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.mhc2 > * {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.mv2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.mvc2 > * {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.m4 {
+  margin: 4px;
+}
+.mc4 > * {
+  margin: 4px;
+}
+.ml4 {
+  margin-left: 4px;
+}
+.mlc4 > * {
+  margin-left: 4px;
+}
+.mr4 {
+  margin-right: 4px;
+}
+.mrc4 > * {
+  margin-right: 4px;
+}
+.mt4 {
+  margin-top: 4px;
+}
+.mtc4 > * {
+  margin-top: 4px;
+}
+.mb4 {
+  margin-bottom: 4px;
+}
+.mbc4 > * {
+  margin-bottom: 4px;
+}
+.mh4 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.mhc4 > * {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.mv4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.mvc4 > * {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.m8 {
+  margin: 8px;
+}
+.mc8 > * {
+  margin: 8px;
+}
+.ml8 {
+  margin-left: 8px;
+}
+.mlc8 > * {
+  margin-left: 8px;
+}
+.mr8 {
+  margin-right: 8px;
+}
+.mrc8 > * {
+  margin-right: 8px;
+}
+.mt8 {
+  margin-top: 8px;
+}
+.mtc8 > * {
+  margin-top: 8px;
+}
+.mb8 {
+  margin-bottom: 8px;
+}
+.mbc8 > * {
+  margin-bottom: 8px;
+}
+.mh8 {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.mhc8 > * {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.mv8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.mvc8 > * {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.m16 {
+  margin: 16px;
+}
+.mc16 > * {
+  margin: 16px;
+}
+.ml16 {
+  margin-left: 16px;
+}
+.mlc16 > * {
+  margin-left: 16px;
+}
+.mr16 {
+  margin-right: 16px;
+}
+.mrc16 > * {
+  margin-right: 16px;
+}
+.mt16 {
+  margin-top: 16px;
+}
+.mtc16 > * {
+  margin-top: 16px;
+}
+.mb16 {
+  margin-bottom: 16px;
+}
+.mbc16 > * {
+  margin-bottom: 16px;
+}
+.mh16 {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.mhc16 > * {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.mv16 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.mvc16 > * {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.m32 {
+  margin: 32px;
+}
+.mc32 > * {
+  margin: 32px;
+}
+.ml32 {
+  margin-left: 32px;
+}
+.mlc32 > * {
+  margin-left: 32px;
+}
+.mr32 {
+  margin-right: 32px;
+}
+.mrc32 > * {
+  margin-right: 32px;
+}
+.mt32 {
+  margin-top: 32px;
+}
+.mtc32 > * {
+  margin-top: 32px;
+}
+.mb32 {
+  margin-bottom: 32px;
+}
+.mbc32 > * {
+  margin-bottom: 32px;
+}
+.mh32 {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.mhc32 > * {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.mv32 {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.mvc32 > * {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.m64 {
+  margin: 64px;
+}
+.mc64 > * {
+  margin: 64px;
+}
+.ml64 {
+  margin-left: 64px;
+}
+.mlc64 > * {
+  margin-left: 64px;
+}
+.mr64 {
+  margin-right: 64px;
+}
+.mrc64 > * {
+  margin-right: 64px;
+}
+.mt64 {
+  margin-top: 64px;
+}
+.mtc64 > * {
+  margin-top: 64px;
+}
+.mb64 {
+  margin-bottom: 64px;
+}
+.mbc64 > * {
+  margin-bottom: 64px;
+}
+.mh64 {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+.mhc64 > * {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+.mv64 {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+.mvc64 > * {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+.m128 {
+  margin: 128px;
+}
+.mc128 > * {
+  margin: 128px;
+}
+.ml128 {
+  margin-left: 128px;
+}
+.mlc128 > * {
+  margin-left: 128px;
+}
+.mr128 {
+  margin-right: 128px;
+}
+.mrc128 > * {
+  margin-right: 128px;
+}
+.mt128 {
+  margin-top: 128px;
+}
+.mtc128 > * {
+  margin-top: 128px;
+}
+.mb128 {
+  margin-bottom: 128px;
+}
+.mbc128 > * {
+  margin-bottom: 128px;
+}
+.mh128 {
+  margin-left: 128px;
+  margin-right: 128px;
+}
+.mhc128 > * {
+  margin-left: 128px;
+  margin-right: 128px;
+}
+.mv128 {
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+.mvc128 > * {
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+.p0 {
+  padding: 0;
+}
+.ph0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.pv0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.p1 {
+  padding: 1px;
+}
+.pl1 {
+  padding-left: 1px;
+}
+.pr1 {
+  padding-right: 1px;
+}
+.pt1 {
+  padding-top: 1px;
+}
+.pb1 {
+  padding-bottom: 1px;
+}
+.ph1 {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+.pv1 {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+.p2 {
+  padding: 2px;
+}
+.pl2 {
+  padding-left: 2px;
+}
+.pr2 {
+  padding-right: 2px;
+}
+.pt2 {
+  padding-top: 2px;
+}
+.pb2 {
+  padding-bottom: 2px;
+}
+.ph2 {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.pv2 {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.p4 {
+  padding: 4px;
+}
+.pl4 {
+  padding-left: 4px;
+}
+.pr4 {
+  padding-right: 4px;
+}
+.pt4 {
+  padding-top: 4px;
+}
+.pb4 {
+  padding-bottom: 4px;
+}
+.ph4 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.pv4 {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.p8 {
+  padding: 8px;
+}
+.pl8 {
+  padding-left: 8px;
+}
+.pr8 {
+  padding-right: 8px;
+}
+.pt8 {
+  padding-top: 8px;
+}
+.pb8 {
+  padding-bottom: 8px;
+}
+.ph8 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.pv8 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.p16 {
+  padding: 16px;
+}
+.pl16 {
+  padding-left: 16px;
+}
+.pr16 {
+  padding-right: 16px;
+}
+.pt16 {
+  padding-top: 16px;
+}
+.pb16 {
+  padding-bottom: 16px;
+}
+.ph16 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.pv16 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.p32 {
+  padding: 32px;
+}
+.pl32 {
+  padding-left: 32px;
+}
+.pr32 {
+  padding-right: 32px;
+}
+.pt32 {
+  padding-top: 32px;
+}
+.pb32 {
+  padding-bottom: 32px;
+}
+.ph32 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.pv32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.p64 {
+  padding: 64px;
+}
+.pl64 {
+  padding-left: 64px;
+}
+.pr64 {
+  padding-right: 64px;
+}
+.pt64 {
+  padding-top: 64px;
+}
+.pb64 {
+  padding-bottom: 64px;
+}
+.ph64 {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+.pv64 {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.p128 {
+  padding: 128px;
+}
+.pl128 {
+  padding-left: 128px;
+}
+.pr128 {
+  padding-right: 128px;
+}
+.pt128 {
+  padding-top: 128px;
+}
+.pb128 {
+  padding-bottom: 128px;
+}
+.ph128 {
+  padding-left: 128px;
+  padding-right: 128px;
+}
+.pv128 {
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+.br1 {
+  border-radius: 1px;
+}
+.br2 {
+  border-radius: 2px;
+}
+.br3 {
+  border-radius: 3px;
+}
+.br4 {
+  border-radius: 4px;
+}
+.br5 {
+  border-radius: 5px;
+}
+.br6 {
+  border-radius: 6px;
+}
+.br7 {
+  border-radius: 7px;
+}
+.br8 {
+  border-radius: 8px;
+}
+.br9 {
+  border-radius: 9px;
+}
+.br10 {
+  border-radius: 10px;
+}
+.br11 {
+  border-radius: 11px;
+}
+.br12 {
+  border-radius: 12px;
+}
+.br13 {
+  border-radius: 13px;
+}
+.br14 {
+  border-radius: 14px;
+}
+.br15 {
+  border-radius: 15px;
+}
+.br16 {
+  border-radius: 16px;
+}
+.br50 {
+  border-radius: 50%;
+}
+.bw0 {
+  border-width: 0px;
+}
+.bw1 {
+  border-width: 1px;
+}
+.bw2 {
+  border-width: 2px;
+}
+.bw3 {
+  border-width: 3px;
+}
+.bw4 {
+  border-width: 4px;
+}
+.bw5 {
+  border-width: 5px;
+}
+.bw6 {
+  border-width: 6px;
+}
+.bw7 {
+  border-width: 7px;
+}
+.bw8 {
+  border-width: 8px;
+}
+.bw9 {
+  border-width: 9px;
+}
+.bw10 {
+  border-width: 10px;
+}
+.bw11 {
+  border-width: 11px;
+}
+.bw12 {
+  border-width: 12px;
+}
+.bw13 {
+  border-width: 13px;
+}
+.bw14 {
+  border-width: 14px;
+}
+.bw15 {
+  border-width: 15px;
+}
+.bw16 {
+  border-width: 16px;
+}
+.aliceblue {
+  color: #f0f8ff;
+}
+.Aliceblue {
+  background-color: #f0f8ff;
+}
+.Aliceblue-h {
+  background-color: #f0f8ff;
+}
+.Aliceblue-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Aliceblue-h:not(.disabled):active {
+  background-color: #dce4eb;
+}
+.antiquewhite {
+  color: #faebd7;
+}
+.Antiquewhite {
+  background-color: #faebd7;
+}
+.Antiquewhite-h {
+  background-color: #faebd7;
+}
+.Antiquewhite-h:not(.disabled):hover {
+  background-color: #ffffeb;
+}
+.Antiquewhite-h:not(.disabled):active {
+  background-color: #e6d7c3;
+}
+.aqua {
+  color: #00ffff;
+}
+.Aqua {
+  background-color: #00ffff;
+}
+.Aqua-h {
+  background-color: #00ffff;
+}
+.Aqua-h:not(.disabled):hover {
+  background-color: #14ffff;
+}
+.Aqua-h:not(.disabled):active {
+  background-color: #00ebeb;
+}
+.aquamarine {
+  color: #7fffd4;
+}
+.Aquamarine {
+  background-color: #7fffd4;
+}
+.Aquamarine-h {
+  background-color: #7fffd4;
+}
+.Aquamarine-h:not(.disabled):hover {
+  background-color: #93ffe8;
+}
+.Aquamarine-h:not(.disabled):active {
+  background-color: #6bebc0;
+}
+.azure {
+  color: #f0ffff;
+}
+.Azure {
+  background-color: #f0ffff;
+}
+.Azure-h {
+  background-color: #f0ffff;
+}
+.Azure-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Azure-h:not(.disabled):active {
+  background-color: #dcebeb;
+}
+.beige {
+  color: #f5f5dc;
+}
+.Beige {
+  background-color: #f5f5dc;
+}
+.Beige-h {
+  background-color: #f5f5dc;
+}
+.Beige-h:not(.disabled):hover {
+  background-color: #fffff0;
+}
+.Beige-h:not(.disabled):active {
+  background-color: #e1e1c8;
+}
+.bisque {
+  color: #ffe4c4;
+}
+.Bisque {
+  background-color: #ffe4c4;
+}
+.Bisque-h {
+  background-color: #ffe4c4;
+}
+.Bisque-h:not(.disabled):hover {
+  background-color: #fff8d8;
+}
+.Bisque-h:not(.disabled):active {
+  background-color: #ebd0b0;
+}
+.black {
+  color: #000000;
+}
+.Black {
+  background-color: #000000;
+}
+.Black-h {
+  background-color: #000000;
+}
+.Black-h:not(.disabled):hover {
+  background-color: #141414;
+}
+.Black-h:not(.disabled):active {
+  background-color: #000000;
+}
+.blanchedalmond {
+  color: #ffebcd;
+}
+.Blanchedalmond {
+  background-color: #ffebcd;
+}
+.Blanchedalmond-h {
+  background-color: #ffebcd;
+}
+.Blanchedalmond-h:not(.disabled):hover {
+  background-color: #ffffe1;
+}
+.Blanchedalmond-h:not(.disabled):active {
+  background-color: #ebd7b9;
+}
+.blue {
+  color: #0000ff;
+}
+.Blue {
+  background-color: #0000ff;
+}
+.Blue-h {
+  background-color: #0000ff;
+}
+.Blue-h:not(.disabled):hover {
+  background-color: #1414ff;
+}
+.Blue-h:not(.disabled):active {
+  background-color: #0000eb;
+}
+.blueviolet {
+  color: #8a2be2;
+}
+.Blueviolet {
+  background-color: #8a2be2;
+}
+.Blueviolet-h {
+  background-color: #8a2be2;
+}
+.Blueviolet-h:not(.disabled):hover {
+  background-color: #9e3ff6;
+}
+.Blueviolet-h:not(.disabled):active {
+  background-color: #7617ce;
+}
+.brown {
+  color: #a52a2a;
+}
+.Brown {
+  background-color: #a52a2a;
+}
+.Brown-h {
+  background-color: #a52a2a;
+}
+.Brown-h:not(.disabled):hover {
+  background-color: #b93e3e;
+}
+.Brown-h:not(.disabled):active {
+  background-color: #911616;
+}
+.burlywood {
+  color: #deb887;
+}
+.Burlywood {
+  background-color: #deb887;
+}
+.Burlywood-h {
+  background-color: #deb887;
+}
+.Burlywood-h:not(.disabled):hover {
+  background-color: #f2cc9b;
+}
+.Burlywood-h:not(.disabled):active {
+  background-color: #caa473;
+}
+.cadetblue {
+  color: #5f9ea0;
+}
+.Cadetblue {
+  background-color: #5f9ea0;
+}
+.Cadetblue-h {
+  background-color: #5f9ea0;
+}
+.Cadetblue-h:not(.disabled):hover {
+  background-color: #73b2b4;
+}
+.Cadetblue-h:not(.disabled):active {
+  background-color: #4b8a8c;
+}
+.chartreuse {
+  color: #7fff00;
+}
+.Chartreuse {
+  background-color: #7fff00;
+}
+.Chartreuse-h {
+  background-color: #7fff00;
+}
+.Chartreuse-h:not(.disabled):hover {
+  background-color: #93ff14;
+}
+.Chartreuse-h:not(.disabled):active {
+  background-color: #6beb00;
+}
+.chocolate {
+  color: #d2691e;
+}
+.Chocolate {
+  background-color: #d2691e;
+}
+.Chocolate-h {
+  background-color: #d2691e;
+}
+.Chocolate-h:not(.disabled):hover {
+  background-color: #e67d32;
+}
+.Chocolate-h:not(.disabled):active {
+  background-color: #be550a;
+}
+.coral {
+  color: #ff7f50;
+}
+.Coral {
+  background-color: #ff7f50;
+}
+.Coral-h {
+  background-color: #ff7f50;
+}
+.Coral-h:not(.disabled):hover {
+  background-color: #ff9364;
+}
+.Coral-h:not(.disabled):active {
+  background-color: #eb6b3c;
+}
+.cornflowerblue {
+  color: #6495ed;
+}
+.Cornflowerblue {
+  background-color: #6495ed;
+}
+.Cornflowerblue-h {
+  background-color: #6495ed;
+}
+.Cornflowerblue-h:not(.disabled):hover {
+  background-color: #78a9ff;
+}
+.Cornflowerblue-h:not(.disabled):active {
+  background-color: #5081d9;
+}
+.cornsilk {
+  color: #fff8dc;
+}
+.Cornsilk {
+  background-color: #fff8dc;
+}
+.Cornsilk-h {
+  background-color: #fff8dc;
+}
+.Cornsilk-h:not(.disabled):hover {
+  background-color: #fffff0;
+}
+.Cornsilk-h:not(.disabled):active {
+  background-color: #ebe4c8;
+}
+.crimson {
+  color: #dc143c;
+}
+.Crimson {
+  background-color: #dc143c;
+}
+.Crimson-h {
+  background-color: #dc143c;
+}
+.Crimson-h:not(.disabled):hover {
+  background-color: #f02850;
+}
+.Crimson-h:not(.disabled):active {
+  background-color: #c80028;
+}
+.cyan {
+  color: #00ffff;
+}
+.Cyan {
+  background-color: #00ffff;
+}
+.Cyan-h {
+  background-color: #00ffff;
+}
+.Cyan-h:not(.disabled):hover {
+  background-color: #14ffff;
+}
+.Cyan-h:not(.disabled):active {
+  background-color: #00ebeb;
+}
+.darkblue {
+  color: #00008b;
+}
+.Darkblue {
+  background-color: #00008b;
+}
+.Darkblue-h {
+  background-color: #00008b;
+}
+.Darkblue-h:not(.disabled):hover {
+  background-color: #14149f;
+}
+.Darkblue-h:not(.disabled):active {
+  background-color: #000077;
+}
+.darkcyan {
+  color: #008b8b;
+}
+.Darkcyan {
+  background-color: #008b8b;
+}
+.Darkcyan-h {
+  background-color: #008b8b;
+}
+.Darkcyan-h:not(.disabled):hover {
+  background-color: #149f9f;
+}
+.Darkcyan-h:not(.disabled):active {
+  background-color: #007777;
+}
+.darkgoldenrod {
+  color: #b8860b;
+}
+.Darkgoldenrod {
+  background-color: #b8860b;
+}
+.Darkgoldenrod-h {
+  background-color: #b8860b;
+}
+.Darkgoldenrod-h:not(.disabled):hover {
+  background-color: #cc9a1f;
+}
+.Darkgoldenrod-h:not(.disabled):active {
+  background-color: #a47200;
+}
+.darkgray {
+  color: #a9a9a9;
+}
+.Darkgray {
+  background-color: #a9a9a9;
+}
+.Darkgray-h {
+  background-color: #a9a9a9;
+}
+.Darkgray-h:not(.disabled):hover {
+  background-color: #bdbdbd;
+}
+.Darkgray-h:not(.disabled):active {
+  background-color: #959595;
+}
+.darkgreen {
+  color: #006400;
+}
+.Darkgreen {
+  background-color: #006400;
+}
+.Darkgreen-h {
+  background-color: #006400;
+}
+.Darkgreen-h:not(.disabled):hover {
+  background-color: #147814;
+}
+.Darkgreen-h:not(.disabled):active {
+  background-color: #005000;
+}
+.darkkhaki {
+  color: #bdb76b;
+}
+.Darkkhaki {
+  background-color: #bdb76b;
+}
+.Darkkhaki-h {
+  background-color: #bdb76b;
+}
+.Darkkhaki-h:not(.disabled):hover {
+  background-color: #d1cb7f;
+}
+.Darkkhaki-h:not(.disabled):active {
+  background-color: #a9a357;
+}
+.darkmagenta {
+  color: #8b008b;
+}
+.Darkmagenta {
+  background-color: #8b008b;
+}
+.Darkmagenta-h {
+  background-color: #8b008b;
+}
+.Darkmagenta-h:not(.disabled):hover {
+  background-color: #9f149f;
+}
+.Darkmagenta-h:not(.disabled):active {
+  background-color: #770077;
+}
+.darkolivegreen {
+  color: #556b2f;
+}
+.Darkolivegreen {
+  background-color: #556b2f;
+}
+.Darkolivegreen-h {
+  background-color: #556b2f;
+}
+.Darkolivegreen-h:not(.disabled):hover {
+  background-color: #697f43;
+}
+.Darkolivegreen-h:not(.disabled):active {
+  background-color: #41571b;
+}
+.darkorange {
+  color: #ff8c00;
+}
+.Darkorange {
+  background-color: #ff8c00;
+}
+.Darkorange-h {
+  background-color: #ff8c00;
+}
+.Darkorange-h:not(.disabled):hover {
+  background-color: #ffa014;
+}
+.Darkorange-h:not(.disabled):active {
+  background-color: #eb7800;
+}
+.darkorchid {
+  color: #9932cc;
+}
+.Darkorchid {
+  background-color: #9932cc;
+}
+.Darkorchid-h {
+  background-color: #9932cc;
+}
+.Darkorchid-h:not(.disabled):hover {
+  background-color: #ad46e0;
+}
+.Darkorchid-h:not(.disabled):active {
+  background-color: #851eb8;
+}
+.darkred {
+  color: #8b0000;
+}
+.Darkred {
+  background-color: #8b0000;
+}
+.Darkred-h {
+  background-color: #8b0000;
+}
+.Darkred-h:not(.disabled):hover {
+  background-color: #9f1414;
+}
+.Darkred-h:not(.disabled):active {
+  background-color: #770000;
+}
+.darksalmon {
+  color: #e9967a;
+}
+.Darksalmon {
+  background-color: #e9967a;
+}
+.Darksalmon-h {
+  background-color: #e9967a;
+}
+.Darksalmon-h:not(.disabled):hover {
+  background-color: #fdaa8e;
+}
+.Darksalmon-h:not(.disabled):active {
+  background-color: #d58266;
+}
+.darkseagreen {
+  color: #8fbc8f;
+}
+.Darkseagreen {
+  background-color: #8fbc8f;
+}
+.Darkseagreen-h {
+  background-color: #8fbc8f;
+}
+.Darkseagreen-h:not(.disabled):hover {
+  background-color: #a3d0a3;
+}
+.Darkseagreen-h:not(.disabled):active {
+  background-color: #7ba87b;
+}
+.darkslateblue {
+  color: #483d8b;
+}
+.Darkslateblue {
+  background-color: #483d8b;
+}
+.Darkslateblue-h {
+  background-color: #483d8b;
+}
+.Darkslateblue-h:not(.disabled):hover {
+  background-color: #5c519f;
+}
+.Darkslateblue-h:not(.disabled):active {
+  background-color: #342977;
+}
+.darkslategray {
+  color: #2f4f4f;
+}
+.Darkslategray {
+  background-color: #2f4f4f;
+}
+.Darkslategray-h {
+  background-color: #2f4f4f;
+}
+.Darkslategray-h:not(.disabled):hover {
+  background-color: #436363;
+}
+.Darkslategray-h:not(.disabled):active {
+  background-color: #1b3b3b;
+}
+.darkturquoise {
+  color: #00ced1;
+}
+.Darkturquoise {
+  background-color: #00ced1;
+}
+.Darkturquoise-h {
+  background-color: #00ced1;
+}
+.Darkturquoise-h:not(.disabled):hover {
+  background-color: #14e2e5;
+}
+.Darkturquoise-h:not(.disabled):active {
+  background-color: #00babd;
+}
+.darkviolet {
+  color: #9400d3;
+}
+.Darkviolet {
+  background-color: #9400d3;
+}
+.Darkviolet-h {
+  background-color: #9400d3;
+}
+.Darkviolet-h:not(.disabled):hover {
+  background-color: #a814e7;
+}
+.Darkviolet-h:not(.disabled):active {
+  background-color: #8000bf;
+}
+.deeppink {
+  color: #ff1493;
+}
+.Deeppink {
+  background-color: #ff1493;
+}
+.Deeppink-h {
+  background-color: #ff1493;
+}
+.Deeppink-h:not(.disabled):hover {
+  background-color: #ff28a7;
+}
+.Deeppink-h:not(.disabled):active {
+  background-color: #eb007f;
+}
+.deepskyblue {
+  color: #00bfff;
+}
+.Deepskyblue {
+  background-color: #00bfff;
+}
+.Deepskyblue-h {
+  background-color: #00bfff;
+}
+.Deepskyblue-h:not(.disabled):hover {
+  background-color: #14d3ff;
+}
+.Deepskyblue-h:not(.disabled):active {
+  background-color: #00abeb;
+}
+.dimgray {
+  color: #696969;
+}
+.Dimgray {
+  background-color: #696969;
+}
+.Dimgray-h {
+  background-color: #696969;
+}
+.Dimgray-h:not(.disabled):hover {
+  background-color: #7d7d7d;
+}
+.Dimgray-h:not(.disabled):active {
+  background-color: #555555;
+}
+.dodgerblue {
+  color: #1e90ff;
+}
+.Dodgerblue {
+  background-color: #1e90ff;
+}
+.Dodgerblue-h {
+  background-color: #1e90ff;
+}
+.Dodgerblue-h:not(.disabled):hover {
+  background-color: #32a4ff;
+}
+.Dodgerblue-h:not(.disabled):active {
+  background-color: #0a7ceb;
+}
+.firebrick {
+  color: #b22222;
+}
+.Firebrick {
+  background-color: #b22222;
+}
+.Firebrick-h {
+  background-color: #b22222;
+}
+.Firebrick-h:not(.disabled):hover {
+  background-color: #c63636;
+}
+.Firebrick-h:not(.disabled):active {
+  background-color: #9e0e0e;
+}
+.floralwhite {
+  color: #fffaf0;
+}
+.Floralwhite {
+  background-color: #fffaf0;
+}
+.Floralwhite-h {
+  background-color: #fffaf0;
+}
+.Floralwhite-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Floralwhite-h:not(.disabled):active {
+  background-color: #ebe6dc;
+}
+.forestgreen {
+  color: #228b22;
+}
+.Forestgreen {
+  background-color: #228b22;
+}
+.Forestgreen-h {
+  background-color: #228b22;
+}
+.Forestgreen-h:not(.disabled):hover {
+  background-color: #369f36;
+}
+.Forestgreen-h:not(.disabled):active {
+  background-color: #0e770e;
+}
+.fuchsia {
+  color: #ff00ff;
+}
+.Fuchsia {
+  background-color: #ff00ff;
+}
+.Fuchsia-h {
+  background-color: #ff00ff;
+}
+.Fuchsia-h:not(.disabled):hover {
+  background-color: #ff14ff;
+}
+.Fuchsia-h:not(.disabled):active {
+  background-color: #eb00eb;
+}
+.gainsboro {
+  color: #dcdcdc;
+}
+.Gainsboro {
+  background-color: #dcdcdc;
+}
+.Gainsboro-h {
+  background-color: #dcdcdc;
+}
+.Gainsboro-h:not(.disabled):hover {
+  background-color: #f0f0f0;
+}
+.Gainsboro-h:not(.disabled):active {
+  background-color: #c8c8c8;
+}
+.ghostwhite {
+  color: #f8f8ff;
+}
+.Ghostwhite {
+  background-color: #f8f8ff;
+}
+.Ghostwhite-h {
+  background-color: #f8f8ff;
+}
+.Ghostwhite-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Ghostwhite-h:not(.disabled):active {
+  background-color: #e4e4eb;
+}
+.gold {
+  color: #ffd700;
+}
+.Gold {
+  background-color: #ffd700;
+}
+.Gold-h {
+  background-color: #ffd700;
+}
+.Gold-h:not(.disabled):hover {
+  background-color: #ffeb14;
+}
+.Gold-h:not(.disabled):active {
+  background-color: #ebc300;
+}
+.goldenrod {
+  color: #daa520;
+}
+.Goldenrod {
+  background-color: #daa520;
+}
+.Goldenrod-h {
+  background-color: #daa520;
+}
+.Goldenrod-h:not(.disabled):hover {
+  background-color: #eeb934;
+}
+.Goldenrod-h:not(.disabled):active {
+  background-color: #c6910c;
+}
+.gray {
+  color: #808080;
+}
+.Gray {
+  background-color: #808080;
+}
+.Gray-h {
+  background-color: #808080;
+}
+.Gray-h:not(.disabled):hover {
+  background-color: #949494;
+}
+.Gray-h:not(.disabled):active {
+  background-color: #6c6c6c;
+}
+.green {
+  color: #008000;
+}
+.Green {
+  background-color: #008000;
+}
+.Green-h {
+  background-color: #008000;
+}
+.Green-h:not(.disabled):hover {
+  background-color: #149414;
+}
+.Green-h:not(.disabled):active {
+  background-color: #006c00;
+}
+.greenyellow {
+  color: #adff2f;
+}
+.Greenyellow {
+  background-color: #adff2f;
+}
+.Greenyellow-h {
+  background-color: #adff2f;
+}
+.Greenyellow-h:not(.disabled):hover {
+  background-color: #c1ff43;
+}
+.Greenyellow-h:not(.disabled):active {
+  background-color: #99eb1b;
+}
+.honeydew {
+  color: #f0fff0;
+}
+.Honeydew {
+  background-color: #f0fff0;
+}
+.Honeydew-h {
+  background-color: #f0fff0;
+}
+.Honeydew-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Honeydew-h:not(.disabled):active {
+  background-color: #dcebdc;
+}
+.hotpink {
+  color: #ff69b4;
+}
+.Hotpink {
+  background-color: #ff69b4;
+}
+.Hotpink-h {
+  background-color: #ff69b4;
+}
+.Hotpink-h:not(.disabled):hover {
+  background-color: #ff7dc8;
+}
+.Hotpink-h:not(.disabled):active {
+  background-color: #eb55a0;
+}
+.indianred {
+  color: #cd5c5c;
+}
+.Indianred {
+  background-color: #cd5c5c;
+}
+.Indianred -h {
+  background-color: #cd5c5c;
+}
+.Indianred -h:not(.disabled):hover {
+  background-color: #e17070;
+}
+.Indianred -h:not(.disabled):active {
+  background-color: #b94848;
+}
+.indigo {
+  color: #4b0082;
+}
+.Indigo {
+  background-color: #4b0082;
+}
+.Indigo-h {
+  background-color: #4b0082;
+}
+.Indigo-h:not(.disabled):hover {
+  background-color: #5f1496;
+}
+.Indigo-h:not(.disabled):active {
+  background-color: #37006e;
+}
+.ivory {
+  color: #fffff0;
+}
+.Ivory {
+  background-color: #fffff0;
+}
+.Ivory-h {
+  background-color: #fffff0;
+}
+.Ivory-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Ivory-h:not(.disabled):active {
+  background-color: #ebebdc;
+}
+.khaki {
+  color: #f0e68c;
+}
+.Khaki {
+  background-color: #f0e68c;
+}
+.Khaki-h {
+  background-color: #f0e68c;
+}
+.Khaki-h:not(.disabled):hover {
+  background-color: #fffaa0;
+}
+.Khaki-h:not(.disabled):active {
+  background-color: #dcd278;
+}
+.lavender {
+  color: #e6e6fa;
+}
+.Lavender {
+  background-color: #e6e6fa;
+}
+.Lavender-h {
+  background-color: #e6e6fa;
+}
+.Lavender-h:not(.disabled):hover {
+  background-color: #fafaff;
+}
+.Lavender-h:not(.disabled):active {
+  background-color: #d2d2e6;
+}
+.lavenderblush {
+  color: #fff0f5;
+}
+.Lavenderblush {
+  background-color: #fff0f5;
+}
+.Lavenderblush-h {
+  background-color: #fff0f5;
+}
+.Lavenderblush-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Lavenderblush-h:not(.disabled):active {
+  background-color: #ebdce1;
+}
+.lawngreen {
+  color: #7cfc00;
+}
+.Lawngreen {
+  background-color: #7cfc00;
+}
+.Lawngreen-h {
+  background-color: #7cfc00;
+}
+.Lawngreen-h:not(.disabled):hover {
+  background-color: #90ff14;
+}
+.Lawngreen-h:not(.disabled):active {
+  background-color: #68e800;
+}
+.lemonchiffon {
+  color: #fffacd;
+}
+.Lemonchiffon {
+  background-color: #fffacd;
+}
+.Lemonchiffon-h {
+  background-color: #fffacd;
+}
+.Lemonchiffon-h:not(.disabled):hover {
+  background-color: #ffffe1;
+}
+.Lemonchiffon-h:not(.disabled):active {
+  background-color: #ebe6b9;
+}
+.lightblue {
+  color: #add8e6;
+}
+.Lightblue {
+  background-color: #add8e6;
+}
+.Lightblue-h {
+  background-color: #add8e6;
+}
+.Lightblue-h:not(.disabled):hover {
+  background-color: #c1ecfa;
+}
+.Lightblue-h:not(.disabled):active {
+  background-color: #99c4d2;
+}
+.lightcoral {
+  color: #f08080;
+}
+.Lightcoral {
+  background-color: #f08080;
+}
+.Lightcoral-h {
+  background-color: #f08080;
+}
+.Lightcoral-h:not(.disabled):hover {
+  background-color: #ff9494;
+}
+.Lightcoral-h:not(.disabled):active {
+  background-color: #dc6c6c;
+}
+.lightcyan {
+  color: #e0ffff;
+}
+.Lightcyan {
+  background-color: #e0ffff;
+}
+.Lightcyan-h {
+  background-color: #e0ffff;
+}
+.Lightcyan-h:not(.disabled):hover {
+  background-color: #f4ffff;
+}
+.Lightcyan-h:not(.disabled):active {
+  background-color: #ccebeb;
+}
+.lightgoldenrodyellow {
+  color: #fafad2;
+}
+.Lightgoldenrodyellow {
+  background-color: #fafad2;
+}
+.Lightgoldenrodyellow-h {
+  background-color: #fafad2;
+}
+.Lightgoldenrodyellow-h:not(.disabled):hover {
+  background-color: #ffffe6;
+}
+.Lightgoldenrodyellow-h:not(.disabled):active {
+  background-color: #e6e6be;
+}
+.lightgray {
+  color: #d3d3d3;
+}
+.Lightgray {
+  background-color: #d3d3d3;
+}
+.Lightgray-h {
+  background-color: #d3d3d3;
+}
+.Lightgray-h:not(.disabled):hover {
+  background-color: #e7e7e7;
+}
+.Lightgray-h:not(.disabled):active {
+  background-color: #bfbfbf;
+}
+.lightgrey {
+  color: #d3d3d3;
+}
+.Lightgrey {
+  background-color: #d3d3d3;
+}
+.Lightgrey-h {
+  background-color: #d3d3d3;
+}
+.Lightgrey-h:not(.disabled):hover {
+  background-color: #e7e7e7;
+}
+.Lightgrey-h:not(.disabled):active {
+  background-color: #bfbfbf;
+}
+.lightgreen {
+  color: #90ee90;
+}
+.Lightgreen {
+  background-color: #90ee90;
+}
+.Lightgreen-h {
+  background-color: #90ee90;
+}
+.Lightgreen-h:not(.disabled):hover {
+  background-color: #a4ffa4;
+}
+.Lightgreen-h:not(.disabled):active {
+  background-color: #7cda7c;
+}
+.lightpink {
+  color: #ffb6c1;
+}
+.Lightpink {
+  background-color: #ffb6c1;
+}
+.Lightpink-h {
+  background-color: #ffb6c1;
+}
+.Lightpink-h:not(.disabled):hover {
+  background-color: #ffcad5;
+}
+.Lightpink-h:not(.disabled):active {
+  background-color: #eba2ad;
+}
+.lightsalmon {
+  color: #ffa07a;
+}
+.Lightsalmon {
+  background-color: #ffa07a;
+}
+.Lightsalmon-h {
+  background-color: #ffa07a;
+}
+.Lightsalmon-h:not(.disabled):hover {
+  background-color: #ffb48e;
+}
+.Lightsalmon-h:not(.disabled):active {
+  background-color: #eb8c66;
+}
+.lightseagreen {
+  color: #20b2aa;
+}
+.Lightseagreen {
+  background-color: #20b2aa;
+}
+.Lightseagreen-h {
+  background-color: #20b2aa;
+}
+.Lightseagreen-h:not(.disabled):hover {
+  background-color: #34c6be;
+}
+.Lightseagreen-h:not(.disabled):active {
+  background-color: #0c9e96;
+}
+.lightskyblue {
+  color: #87cefa;
+}
+.Lightskyblue {
+  background-color: #87cefa;
+}
+.Lightskyblue-h {
+  background-color: #87cefa;
+}
+.Lightskyblue-h:not(.disabled):hover {
+  background-color: #9be2ff;
+}
+.Lightskyblue-h:not(.disabled):active {
+  background-color: #73bae6;
+}
+.lightslategray {
+  color: #778899;
+}
+.Lightslategray {
+  background-color: #778899;
+}
+.Lightslategray-h {
+  background-color: #778899;
+}
+.Lightslategray-h:not(.disabled):hover {
+  background-color: #8b9cad;
+}
+.Lightslategray-h:not(.disabled):active {
+  background-color: #637485;
+}
+.lightsteelblue {
+  color: #b0c4de;
+}
+.Lightsteelblue {
+  background-color: #b0c4de;
+}
+.Lightsteelblue-h {
+  background-color: #b0c4de;
+}
+.Lightsteelblue-h:not(.disabled):hover {
+  background-color: #c4d8f2;
+}
+.Lightsteelblue-h:not(.disabled):active {
+  background-color: #9cb0ca;
+}
+.lightyellow {
+  color: #ffffe0;
+}
+.Lightyellow {
+  background-color: #ffffe0;
+}
+.Lightyellow-h {
+  background-color: #ffffe0;
+}
+.Lightyellow-h:not(.disabled):hover {
+  background-color: #fffff4;
+}
+.Lightyellow-h:not(.disabled):active {
+  background-color: #ebebcc;
+}
+.lime {
+  color: #00ff00;
+}
+.Lime {
+  background-color: #00ff00;
+}
+.Lime-h {
+  background-color: #00ff00;
+}
+.Lime-h:not(.disabled):hover {
+  background-color: #14ff14;
+}
+.Lime-h:not(.disabled):active {
+  background-color: #00eb00;
+}
+.limegreen {
+  color: #32cd32;
+}
+.Limegreen {
+  background-color: #32cd32;
+}
+.Limegreen-h {
+  background-color: #32cd32;
+}
+.Limegreen-h:not(.disabled):hover {
+  background-color: #46e146;
+}
+.Limegreen-h:not(.disabled):active {
+  background-color: #1eb91e;
+}
+.linen {
+  color: #faf0e6;
+}
+.Linen {
+  background-color: #faf0e6;
+}
+.Linen-h {
+  background-color: #faf0e6;
+}
+.Linen-h:not(.disabled):hover {
+  background-color: #fffffa;
+}
+.Linen-h:not(.disabled):active {
+  background-color: #e6dcd2;
+}
+.magenta {
+  color: #ff00ff;
+}
+.Magenta {
+  background-color: #ff00ff;
+}
+.Magenta-h {
+  background-color: #ff00ff;
+}
+.Magenta-h:not(.disabled):hover {
+  background-color: #ff14ff;
+}
+.Magenta-h:not(.disabled):active {
+  background-color: #eb00eb;
+}
+.maroon {
+  color: #800000;
+}
+.Maroon {
+  background-color: #800000;
+}
+.Maroon-h {
+  background-color: #800000;
+}
+.Maroon-h:not(.disabled):hover {
+  background-color: #941414;
+}
+.Maroon-h:not(.disabled):active {
+  background-color: #6c0000;
+}
+.mediumaquamarine {
+  color: #66cdaa;
+}
+.Mediumaquamarine {
+  background-color: #66cdaa;
+}
+.Mediumaquamarine-h {
+  background-color: #66cdaa;
+}
+.Mediumaquamarine-h:not(.disabled):hover {
+  background-color: #7ae1be;
+}
+.Mediumaquamarine-h:not(.disabled):active {
+  background-color: #52b996;
+}
+.mediumblue {
+  color: #0000cd;
+}
+.Mediumblue {
+  background-color: #0000cd;
+}
+.Mediumblue-h {
+  background-color: #0000cd;
+}
+.Mediumblue-h:not(.disabled):hover {
+  background-color: #1414e1;
+}
+.Mediumblue-h:not(.disabled):active {
+  background-color: #0000b9;
+}
+.mediumorchid {
+  color: #ba55d3;
+}
+.Mediumorchid {
+  background-color: #ba55d3;
+}
+.Mediumorchid-h {
+  background-color: #ba55d3;
+}
+.Mediumorchid-h:not(.disabled):hover {
+  background-color: #ce69e7;
+}
+.Mediumorchid-h:not(.disabled):active {
+  background-color: #a641bf;
+}
+.mediumpurple {
+  color: #9370d8;
+}
+.Mediumpurple {
+  background-color: #9370d8;
+}
+.Mediumpurple-h {
+  background-color: #9370d8;
+}
+.Mediumpurple-h:not(.disabled):hover {
+  background-color: #a784ec;
+}
+.Mediumpurple-h:not(.disabled):active {
+  background-color: #7f5cc4;
+}
+.mediumseagreen {
+  color: #3cb371;
+}
+.Mediumseagreen {
+  background-color: #3cb371;
+}
+.Mediumseagreen-h {
+  background-color: #3cb371;
+}
+.Mediumseagreen-h:not(.disabled):hover {
+  background-color: #50c785;
+}
+.Mediumseagreen-h:not(.disabled):active {
+  background-color: #289f5d;
+}
+.mediumslateblue {
+  color: #7b68ee;
+}
+.Mediumslateblue {
+  background-color: #7b68ee;
+}
+.Mediumslateblue-h {
+  background-color: #7b68ee;
+}
+.Mediumslateblue-h:not(.disabled):hover {
+  background-color: #8f7cff;
+}
+.Mediumslateblue-h:not(.disabled):active {
+  background-color: #6754da;
+}
+.mediumspringgreen {
+  color: #00fa9a;
+}
+.Mediumspringgreen {
+  background-color: #00fa9a;
+}
+.Mediumspringgreen-h {
+  background-color: #00fa9a;
+}
+.Mediumspringgreen-h:not(.disabled):hover {
+  background-color: #14ffae;
+}
+.Mediumspringgreen-h:not(.disabled):active {
+  background-color: #00e686;
+}
+.mediumturquoise {
+  color: #48d1cc;
+}
+.Mediumturquoise {
+  background-color: #48d1cc;
+}
+.Mediumturquoise-h {
+  background-color: #48d1cc;
+}
+.Mediumturquoise-h:not(.disabled):hover {
+  background-color: #5ce5e0;
+}
+.Mediumturquoise-h:not(.disabled):active {
+  background-color: #34bdb8;
+}
+.mediumvioletred {
+  color: #c71585;
+}
+.Mediumvioletred {
+  background-color: #c71585;
+}
+.Mediumvioletred-h {
+  background-color: #c71585;
+}
+.Mediumvioletred-h:not(.disabled):hover {
+  background-color: #db2999;
+}
+.Mediumvioletred-h:not(.disabled):active {
+  background-color: #b30171;
+}
+.midnightblue {
+  color: #191970;
+}
+.Midnightblue {
+  background-color: #191970;
+}
+.Midnightblue-h {
+  background-color: #191970;
+}
+.Midnightblue-h:not(.disabled):hover {
+  background-color: #2d2d84;
+}
+.Midnightblue-h:not(.disabled):active {
+  background-color: #05055c;
+}
+.mintcream {
+  color: #f5fffa;
+}
+.Mintcream {
+  background-color: #f5fffa;
+}
+.Mintcream-h {
+  background-color: #f5fffa;
+}
+.Mintcream-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Mintcream-h:not(.disabled):active {
+  background-color: #e1ebe6;
+}
+.mistyrose {
+  color: #ffe4e1;
+}
+.Mistyrose {
+  background-color: #ffe4e1;
+}
+.Mistyrose-h {
+  background-color: #ffe4e1;
+}
+.Mistyrose-h:not(.disabled):hover {
+  background-color: #fff8f5;
+}
+.Mistyrose-h:not(.disabled):active {
+  background-color: #ebd0cd;
+}
+.moccasin {
+  color: #ffe4b5;
+}
+.Moccasin {
+  background-color: #ffe4b5;
+}
+.Moccasin-h {
+  background-color: #ffe4b5;
+}
+.Moccasin-h:not(.disabled):hover {
+  background-color: #fff8c9;
+}
+.Moccasin-h:not(.disabled):active {
+  background-color: #ebd0a1;
+}
+.navajowhite {
+  color: #ffdead;
+}
+.Navajowhite {
+  background-color: #ffdead;
+}
+.Navajowhite-h {
+  background-color: #ffdead;
+}
+.Navajowhite-h:not(.disabled):hover {
+  background-color: #fff2c1;
+}
+.Navajowhite-h:not(.disabled):active {
+  background-color: #ebca99;
+}
+.navy {
+  color: #000080;
+}
+.Navy {
+  background-color: #000080;
+}
+.Navy-h {
+  background-color: #000080;
+}
+.Navy-h:not(.disabled):hover {
+  background-color: #141494;
+}
+.Navy-h:not(.disabled):active {
+  background-color: #00006c;
+}
+.oldlace {
+  color: #fdf5e6;
+}
+.Oldlace {
+  background-color: #fdf5e6;
+}
+.Oldlace-h {
+  background-color: #fdf5e6;
+}
+.Oldlace-h:not(.disabled):hover {
+  background-color: #fffffa;
+}
+.Oldlace-h:not(.disabled):active {
+  background-color: #e9e1d2;
+}
+.olive {
+  color: #808000;
+}
+.Olive {
+  background-color: #808000;
+}
+.Olive-h {
+  background-color: #808000;
+}
+.Olive-h:not(.disabled):hover {
+  background-color: #949414;
+}
+.Olive-h:not(.disabled):active {
+  background-color: #6c6c00;
+}
+.olivedrab {
+  color: #6b8e23;
+}
+.Olivedrab {
+  background-color: #6b8e23;
+}
+.Olivedrab-h {
+  background-color: #6b8e23;
+}
+.Olivedrab-h:not(.disabled):hover {
+  background-color: #7fa237;
+}
+.Olivedrab-h:not(.disabled):active {
+  background-color: #577a0f;
+}
+.orange {
+  color: #ffa500;
+}
+.Orange {
+  background-color: #ffa500;
+}
+.Orange-h {
+  background-color: #ffa500;
+}
+.Orange-h:not(.disabled):hover {
+  background-color: #ffb914;
+}
+.Orange-h:not(.disabled):active {
+  background-color: #eb9100;
+}
+.orangered {
+  color: #ff4500;
+}
+.Orangered {
+  background-color: #ff4500;
+}
+.Orangered-h {
+  background-color: #ff4500;
+}
+.Orangered-h:not(.disabled):hover {
+  background-color: #ff5914;
+}
+.Orangered-h:not(.disabled):active {
+  background-color: #eb3100;
+}
+.orchid {
+  color: #da70d6;
+}
+.Orchid {
+  background-color: #da70d6;
+}
+.Orchid-h {
+  background-color: #da70d6;
+}
+.Orchid-h:not(.disabled):hover {
+  background-color: #ee84ea;
+}
+.Orchid-h:not(.disabled):active {
+  background-color: #c65cc2;
+}
+.palegoldenrod {
+  color: #eee8aa;
+}
+.Palegoldenrod {
+  background-color: #eee8aa;
+}
+.Palegoldenrod-h {
+  background-color: #eee8aa;
+}
+.Palegoldenrod-h:not(.disabled):hover {
+  background-color: #fffcbe;
+}
+.Palegoldenrod-h:not(.disabled):active {
+  background-color: #dad496;
+}
+.palegreen {
+  color: #98fb98;
+}
+.Palegreen {
+  background-color: #98fb98;
+}
+.Palegreen-h {
+  background-color: #98fb98;
+}
+.Palegreen-h:not(.disabled):hover {
+  background-color: #acffac;
+}
+.Palegreen-h:not(.disabled):active {
+  background-color: #84e784;
+}
+.paleturquoise {
+  color: #afeeee;
+}
+.Paleturquoise {
+  background-color: #afeeee;
+}
+.Paleturquoise-h {
+  background-color: #afeeee;
+}
+.Paleturquoise-h:not(.disabled):hover {
+  background-color: #c3ffff;
+}
+.Paleturquoise-h:not(.disabled):active {
+  background-color: #9bdada;
+}
+.palevioletred {
+  color: #d87093;
+}
+.Palevioletred {
+  background-color: #d87093;
+}
+.Palevioletred-h {
+  background-color: #d87093;
+}
+.Palevioletred-h:not(.disabled):hover {
+  background-color: #ec84a7;
+}
+.Palevioletred-h:not(.disabled):active {
+  background-color: #c45c7f;
+}
+.papayawhip {
+  color: #ffefd5;
+}
+.Papayawhip {
+  background-color: #ffefd5;
+}
+.Papayawhip-h {
+  background-color: #ffefd5;
+}
+.Papayawhip-h:not(.disabled):hover {
+  background-color: #ffffe9;
+}
+.Papayawhip-h:not(.disabled):active {
+  background-color: #ebdbc1;
+}
+.peachpuff {
+  color: #ffdab9;
+}
+.Peachpuff {
+  background-color: #ffdab9;
+}
+.Peachpuff-h {
+  background-color: #ffdab9;
+}
+.Peachpuff-h:not(.disabled):hover {
+  background-color: #ffeecd;
+}
+.Peachpuff-h:not(.disabled):active {
+  background-color: #ebc6a5;
+}
+.peru {
+  color: #cd853f;
+}
+.Peru {
+  background-color: #cd853f;
+}
+.Peru-h {
+  background-color: #cd853f;
+}
+.Peru-h:not(.disabled):hover {
+  background-color: #e19953;
+}
+.Peru-h:not(.disabled):active {
+  background-color: #b9712b;
+}
+.pink {
+  color: #ffc0cb;
+}
+.Pink {
+  background-color: #ffc0cb;
+}
+.Pink-h {
+  background-color: #ffc0cb;
+}
+.Pink-h:not(.disabled):hover {
+  background-color: #ffd4df;
+}
+.Pink-h:not(.disabled):active {
+  background-color: #ebacb7;
+}
+.plum {
+  color: #dda0dd;
+}
+.Plum {
+  background-color: #dda0dd;
+}
+.Plum-h {
+  background-color: #dda0dd;
+}
+.Plum-h:not(.disabled):hover {
+  background-color: #f1b4f1;
+}
+.Plum-h:not(.disabled):active {
+  background-color: #c98cc9;
+}
+.powderblue {
+  color: #b0e0e6;
+}
+.Powderblue {
+  background-color: #b0e0e6;
+}
+.Powderblue-h {
+  background-color: #b0e0e6;
+}
+.Powderblue-h:not(.disabled):hover {
+  background-color: #c4f4fa;
+}
+.Powderblue-h:not(.disabled):active {
+  background-color: #9cccd2;
+}
+.purple {
+  color: #800080;
+}
+.Purple {
+  background-color: #800080;
+}
+.Purple-h {
+  background-color: #800080;
+}
+.Purple-h:not(.disabled):hover {
+  background-color: #941494;
+}
+.Purple-h:not(.disabled):active {
+  background-color: #6c006c;
+}
+.red {
+  color: #ff0000;
+}
+.Red {
+  background-color: #ff0000;
+}
+.Red-h {
+  background-color: #ff0000;
+}
+.Red-h:not(.disabled):hover {
+  background-color: #ff1414;
+}
+.Red-h:not(.disabled):active {
+  background-color: #eb0000;
+}
+.rosybrown {
+  color: #bc8f8f;
+}
+.Rosybrown {
+  background-color: #bc8f8f;
+}
+.Rosybrown-h {
+  background-color: #bc8f8f;
+}
+.Rosybrown-h:not(.disabled):hover {
+  background-color: #d0a3a3;
+}
+.Rosybrown-h:not(.disabled):active {
+  background-color: #a87b7b;
+}
+.royalblue {
+  color: #4169e1;
+}
+.Royalblue {
+  background-color: #4169e1;
+}
+.Royalblue-h {
+  background-color: #4169e1;
+}
+.Royalblue-h:not(.disabled):hover {
+  background-color: #557df5;
+}
+.Royalblue-h:not(.disabled):active {
+  background-color: #2d55cd;
+}
+.saddlebrown {
+  color: #8b4513;
+}
+.Saddlebrown {
+  background-color: #8b4513;
+}
+.Saddlebrown-h {
+  background-color: #8b4513;
+}
+.Saddlebrown-h:not(.disabled):hover {
+  background-color: #9f5927;
+}
+.Saddlebrown-h:not(.disabled):active {
+  background-color: #773100;
+}
+.salmon {
+  color: #fa8072;
+}
+.Salmon {
+  background-color: #fa8072;
+}
+.Salmon-h {
+  background-color: #fa8072;
+}
+.Salmon-h:not(.disabled):hover {
+  background-color: #ff9486;
+}
+.Salmon-h:not(.disabled):active {
+  background-color: #e66c5e;
+}
+.sandybrown {
+  color: #f4a460;
+}
+.Sandybrown {
+  background-color: #f4a460;
+}
+.Sandybrown-h {
+  background-color: #f4a460;
+}
+.Sandybrown-h:not(.disabled):hover {
+  background-color: #ffb874;
+}
+.Sandybrown-h:not(.disabled):active {
+  background-color: #e0904c;
+}
+.seagreen {
+  color: #2e8b57;
+}
+.Seagreen {
+  background-color: #2e8b57;
+}
+.Seagreen-h {
+  background-color: #2e8b57;
+}
+.Seagreen-h:not(.disabled):hover {
+  background-color: #429f6b;
+}
+.Seagreen-h:not(.disabled):active {
+  background-color: #1a7743;
+}
+.seashell {
+  color: #fff5ee;
+}
+.Seashell {
+  background-color: #fff5ee;
+}
+.Seashell-h {
+  background-color: #fff5ee;
+}
+.Seashell-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Seashell-h:not(.disabled):active {
+  background-color: #ebe1da;
+}
+.sienna {
+  color: #a0522d;
+}
+.Sienna {
+  background-color: #a0522d;
+}
+.Sienna-h {
+  background-color: #a0522d;
+}
+.Sienna-h:not(.disabled):hover {
+  background-color: #b46641;
+}
+.Sienna-h:not(.disabled):active {
+  background-color: #8c3e19;
+}
+.silver {
+  color: #c0c0c0;
+}
+.Silver {
+  background-color: #c0c0c0;
+}
+.Silver-h {
+  background-color: #c0c0c0;
+}
+.Silver-h:not(.disabled):hover {
+  background-color: #d4d4d4;
+}
+.Silver-h:not(.disabled):active {
+  background-color: #acacac;
+}
+.skyblue {
+  color: #87ceeb;
+}
+.Skyblue {
+  background-color: #87ceeb;
+}
+.Skyblue-h {
+  background-color: #87ceeb;
+}
+.Skyblue-h:not(.disabled):hover {
+  background-color: #9be2ff;
+}
+.Skyblue-h:not(.disabled):active {
+  background-color: #73bad7;
+}
+.slateblue {
+  color: #6a5acd;
+}
+.Slateblue {
+  background-color: #6a5acd;
+}
+.Slateblue-h {
+  background-color: #6a5acd;
+}
+.Slateblue-h:not(.disabled):hover {
+  background-color: #7e6ee1;
+}
+.Slateblue-h:not(.disabled):active {
+  background-color: #5646b9;
+}
+.slategray {
+  color: #708090;
+}
+.Slategray {
+  background-color: #708090;
+}
+.Slategray-h {
+  background-color: #708090;
+}
+.Slategray-h:not(.disabled):hover {
+  background-color: #8494a4;
+}
+.Slategray-h:not(.disabled):active {
+  background-color: #5c6c7c;
+}
+.snow {
+  color: #fffafa;
+}
+.Snow {
+  background-color: #fffafa;
+}
+.Snow-h {
+  background-color: #fffafa;
+}
+.Snow-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Snow-h:not(.disabled):active {
+  background-color: #ebe6e6;
+}
+.springgreen {
+  color: #00ff7f;
+}
+.Springgreen {
+  background-color: #00ff7f;
+}
+.Springgreen-h {
+  background-color: #00ff7f;
+}
+.Springgreen-h:not(.disabled):hover {
+  background-color: #14ff93;
+}
+.Springgreen-h:not(.disabled):active {
+  background-color: #00eb6b;
+}
+.steelblue {
+  color: #4682b4;
+}
+.Steelblue {
+  background-color: #4682b4;
+}
+.Steelblue-h {
+  background-color: #4682b4;
+}
+.Steelblue-h:not(.disabled):hover {
+  background-color: #5a96c8;
+}
+.Steelblue-h:not(.disabled):active {
+  background-color: #326ea0;
+}
+.tan {
+  color: #d2b48c;
+}
+.Tan {
+  background-color: #d2b48c;
+}
+.Tan-h {
+  background-color: #d2b48c;
+}
+.Tan-h:not(.disabled):hover {
+  background-color: #e6c8a0;
+}
+.Tan-h:not(.disabled):active {
+  background-color: #bea078;
+}
+.teal {
+  color: #008080;
+}
+.Teal {
+  background-color: #008080;
+}
+.Teal-h {
+  background-color: #008080;
+}
+.Teal-h:not(.disabled):hover {
+  background-color: #149494;
+}
+.Teal-h:not(.disabled):active {
+  background-color: #006c6c;
+}
+.thistle {
+  color: #d8bfd8;
+}
+.Thistle {
+  background-color: #d8bfd8;
+}
+.Thistle-h {
+  background-color: #d8bfd8;
+}
+.Thistle-h:not(.disabled):hover {
+  background-color: #ecd3ec;
+}
+.Thistle-h:not(.disabled):active {
+  background-color: #c4abc4;
+}
+.tomato {
+  color: #ff6347;
+}
+.Tomato {
+  background-color: #ff6347;
+}
+.Tomato-h {
+  background-color: #ff6347;
+}
+.Tomato-h:not(.disabled):hover {
+  background-color: #ff775b;
+}
+.Tomato-h:not(.disabled):active {
+  background-color: #eb4f33;
+}
+.turquoise {
+  color: #40e0d0;
+}
+.Turquoise {
+  background-color: #40e0d0;
+}
+.Turquoise-h {
+  background-color: #40e0d0;
+}
+.Turquoise-h:not(.disabled):hover {
+  background-color: #54f4e4;
+}
+.Turquoise-h:not(.disabled):active {
+  background-color: #2cccbc;
+}
+.violet {
+  color: #ee82ee;
+}
+.Violet {
+  background-color: #ee82ee;
+}
+.Violet-h {
+  background-color: #ee82ee;
+}
+.Violet-h:not(.disabled):hover {
+  background-color: #ff96ff;
+}
+.Violet-h:not(.disabled):active {
+  background-color: #da6eda;
+}
+.wheat {
+  color: #f5deb3;
+}
+.Wheat {
+  background-color: #f5deb3;
+}
+.Wheat-h {
+  background-color: #f5deb3;
+}
+.Wheat-h:not(.disabled):hover {
+  background-color: #fff2c7;
+}
+.Wheat-h:not(.disabled):active {
+  background-color: #e1ca9f;
+}
+.white {
+  color: #ffffff;
+}
+.White {
+  background-color: #ffffff;
+}
+.White-h {
+  background-color: #ffffff;
+}
+.White-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.White-h:not(.disabled):active {
+  background-color: #ebebeb;
+}
+.whitesmoke {
+  color: #f5f5f5;
+}
+.Whitesmoke {
+  background-color: #f5f5f5;
+}
+.Whitesmoke-h {
+  background-color: #f5f5f5;
+}
+.Whitesmoke-h:not(.disabled):hover {
+  background-color: #ffffff;
+}
+.Whitesmoke-h:not(.disabled):active {
+  background-color: #e1e1e1;
+}
+.yellow {
+  color: #ffff00;
+}
+.Yellow {
+  background-color: #ffff00;
+}
+.Yellow-h {
+  background-color: #ffff00;
+}
+.Yellow-h:not(.disabled):hover {
+  background-color: #ffff14;
+}
+.Yellow-h:not(.disabled):active {
+  background-color: #ebeb00;
+}
+.yellowgreen {
+  color: #9acd32;
+}
+.Yellowgreen {
+  background-color: #9acd32;
+}
+.Yellowgreen-h {
+  background-color: #9acd32;
+}
+.Yellowgreen-h:not(.disabled):hover {
+  background-color: #aee146;
+}
+.Yellowgreen-h:not(.disabled):active {
+  background-color: #86b91e;
+}
+.sp2 {
+  width: 2px;
+}
+.spv2 {
+  height: 2px;
+}
+.sp4 {
+  width: 4px;
+}
+.spv4 {
+  height: 4px;
+}
+.sp8 {
+  width: 8px;
+}
+.spv8 {
+  height: 8px;
+}
+.sp16 {
+  width: 16px;
+}
+.spv16 {
+  height: 16px;
+}
+.sp32 {
+  width: 32px;
+}
+.spv32 {
+  height: 32px;
+}
+.sp64 {
+  width: 64px;
+}
+.spv64 {
+  height: 64px;
+}
+.op0 {
+  opacity: 0;
+}
+.op5 {
+  opacity: 0.5;
+}
+.op10 {
+  opacity: 0.1;
+}
+.op15 {
+  opacity: 0.15;
+}
+.op20 {
+  opacity: 0.2;
+}
+.op25 {
+  opacity: 0.25;
+}
+.op30 {
+  opacity: 0.3;
+}
+.op35 {
+  opacity: 0.35;
+}
+.op40 {
+  opacity: 0.4;
+}
+.op45 {
+  opacity: 0.45;
+}
+.op50 {
+  opacity: 0.5;
+}
+.op55 {
+  opacity: 0.55;
+}
+.op60 {
+  opacity: 0.6;
+}
+.op65 {
+  opacity: 0.65;
+}
+.op70 {
+  opacity: 0.7;
+}
+.op75 {
+  opacity: 0.75;
+}
+.op80 {
+  opacity: 0.8;
+}
+.op85 {
+  opacity: 0.85;
+}
+.op90 {
+  opacity: 0.9;
+}
+.op95 {
+  opacity: 0.95;
+}
+.op100 {
+  opacity: 1;
+}
+.zi10 {
+  z-index: 10;
+}
+.zi20 {
+  z-index: 20;
+}
+.zi30 {
+  z-index: 30;
+}
+.zi40 {
+  z-index: 40;
+}
+.zi50 {
+  z-index: 50;
+}
+.zi60 {
+  z-index: 60;
+}
+.zi70 {
+  z-index: 70;
+}
+.zi80 {
+  z-index: 80;
+}
+.zi90 {
+  z-index: 90;
+}
+.zi100 {
+  z-index: 100;
+}
+.zii {
+  z-index: 1000000;
+}
+.bs1 {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+.bs1-h {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s;
+}
+.bs1-h:not(.disabled):hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.bs2 {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.bs2-h {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s;
+}
+.bs2-h:not(.disabled):hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bs4 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bs4-h {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s;
+}
+.bs4-h:not(.disabled):hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 16px 40px 0 rgba(0, 0, 0, 0.19);
+}
+.bs8 {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 16px 40px 0 rgba(0, 0, 0, 0.19);
+}
+.bs8-h {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 16px 40px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s;
+}
+.bs8-h:not(.disabled):hover {
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2),
+    0 32px 80px 0 rgba(0, 0, 0, 0.19);
+}
+.aic {
+  align-items: center;
+}
+.aife {
+  align-items: flex-end;
+}
+.aifs {
+  align-items: flex-start;
+}
+.ais {
+  align-items: stretch;
+}
+.cp {
+  cursor: pointer;
+}
+.f {
+  display: flex;
+}
+.f00a {
+  flex: 0 0 auto;
+}
+.fc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fv {
+  display: flex;
+  flex-direction: column;
+}
+.fw {
+  display: flex;
+  flex-wrap: wrap;
+}
+.fg0 {
+  flex-grow: 0;
+}
+.fg1 {
+  flex-grow: 1;
+}
+.fs0 {
+  flex-shrink: 0;
+}
+.fs1 {
+  flex-shrink: 1;
+}
+.jcs {
+  justify-content: flex-start;
+}
+.jce {
+  justify-content: flex-end;
+}
+.jcc {
+  justify-content: center;
+}
+.jcsb {
+  justify-content: space-between;
+}
+.jcsa {
+  justify-content: space-around;
+}
+.oa {
+  overflow: auto;
+}
+.oh {
+  overflow: hidden;
+}
+.os {
+  overflow: scroll;
+}
+.ov {
+  overflow: visible;
+}
+.oxa {
+  overflow-x: auto;
+}
+.oxh {
+  overflow-x: hidden;
+}
+.oxs {
+  overflow-x: scroll;
+}
+.oxv {
+  overflow-x: visible;
+}
+.oya {
+  overflow-y: auto;
+}
+.oyh {
+  overflow-y: hidden;
+}
+.oys {
+  overflow-y: scroll;
+}
+.oyv {
+  overflow-y: visible;
+}
+.pa {
+  position: absolute;
+}
+.pf {
+  position: fixed;
+}
+.pr {
+  position: relative;
+}
+.ps {
+  position: sticky;
+}
+.tac {
+  text-align: center;
+}
+.tar {
+  text-align: right;
+}
+.tdn {
+  text-decoration: none;
+}
+.tdo {
+  text-decoration: overline;
+}
+.tdlt {
+  text-decoration: line-through;
+}
+.tdu {
+  text-decoration: underline;
+}
+.tduo {
+  text-decoration: underline overline;
+}
+.usn {
+  user-select: none;
+}
+.vab {
+  vertical-align: bottom;
+}
+.vabl {
+  vertical-align: baseline;
+}
+.vam {
+  vertical-align: middle;
+}
+.vat {
+  vertical-align: top;
+}
+.vatb {
+  vertical-align: text-bottom;
+}
+.vatt {
+  vertical-align: text-top;
+}
+.vc {
+  visibility: collapse;
+}
+.vh {
+  visibility: hidden;
+}
+.vv {
+  visibility: visible;
+}
+.hr {
+  border-color: rgba(250, 250, 250, 0.5);
+  width: 100%;
+  margin: 0;
+}
+.li:hover {
+  background-color: lavender;
+}
+.t0 {
+  top: 0;
+}
+.l0 {
+  left: 0;
+}
+.r0 {
+  right: 0;
+}
+.b0 {
+  bottom: 0;
+}
