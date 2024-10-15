@@ -3,7 +3,7 @@ import { createElement, $3 } from './html.js'
 
 // export const isSolid = process.env.fw === 'solid'
 // export const isReact = process.env.fw === 'react'
-export const isDev = process.env.NODE_ENV === 'development'
+export const isDev = false // process.env.NODE_ENV === 'development'
 
 export const LH = 'http://localhost:9000/'
 export const NF = isDev
