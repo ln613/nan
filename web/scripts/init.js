@@ -8,13 +8,13 @@ const cfgs = {
   css: { tag: 'link', src: 'href', type: ['rel', 'stylesheet'] },
 }
 
-const load = src =>
+const load = (src, isModule) =>
   new Promise((resolve, reject) => {
     const l = src.lastIndexOf('.')
     const cfg = cfgs[src.slice(l + 1)]
     const tag = document.createElement(cfg.tag)
     const container = document.head || document.body
-    tag[cfg.type[0]] = cfg.type[1]
+    tag[cfg.type[0]] = isModule ? 'module' : cfg.type[1]
     tag.async = true
     tag[cfg.src] = src.startsWith('https') ? src : `${HOST}${src}`
     tag.addEventListener('load', resolve)
@@ -32,7 +32,7 @@ const loadAll = async () => {
   //   loadReact(),
   // ])
   const script = scripts.find(s => window.location.host.includes(s))
-  script && load(`scripts/${script}.js`)
+  script && load(`scripts/${script}.js`, true)
 }
 
 loadAll()
