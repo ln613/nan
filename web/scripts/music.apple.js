@@ -1,4 +1,4 @@
-import { key, $1 } from './html'
+import { key, $1 } from './html.js'
 
 const goto = d =>
   document

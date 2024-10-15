@@ -1,5 +1,5 @@
 import ImgList from '../components/imglist'
-import { save, getById, $1, $3, Url, key } from './html'
+import { save, getById, $1, $3, Url, key } from './html.js'
 
 const db = 'pcn.pcn'
 const doc = 'lnnlgmail_rank'

@@ -1,4 +1,4 @@
-import { $3 } from './html'
+import { $3 } from './html.js'
 
 setInterval(() => {
   $3('.attachments-grid-file-name a').forEach(a => {

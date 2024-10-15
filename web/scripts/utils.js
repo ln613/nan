@@ -1,5 +1,5 @@
 // import { createRoot } from 'react-dom/client'
-import { createElement, $3, mapValue } from './html'
+import { createElement, $3, mapValue } from './html.js'
 
 // export const isSolid = process.env.fw === 'solid'
 // export const isReact = process.env.fw === 'react'

@@ -1,4 +1,4 @@
-import { $2, remove } from './html'
+import { $2, remove } from './html.js'
 
 setInterval(() => {
   remove('body>:is(iframe, a)')

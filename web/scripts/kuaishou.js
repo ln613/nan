@@ -1,5 +1,5 @@
-import { key, $1, $3, Url, waitFor } from '@sace/core'
-import { tap, dbInit, get, NF, LH, trimLeft, trimRight, waitUntil } from './utils'
+import { key, $1, $3, Url, waitFor } from './html.js'
+import { tap, dbInit, get, NF, LH, trimLeft, trimRight, waitUntil } from './utils.js'
 
 const getUser = () => {
   let u = $1('.user-detail .user-name').innerText.replace(

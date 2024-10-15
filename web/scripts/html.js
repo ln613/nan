@@ -1,4 +1,4 @@
-import { sleep } from './utils'
+import { sleep } from './utils.js'
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition

@@ -1,4 +1,4 @@
-import { $2, css, append, remove, text, value, click, Url } from './html'
+import { $2, css, append, remove, text, value, click, Url } from './html.js'
 
 remove('.icone_down')
 remove('.liste_arrow')

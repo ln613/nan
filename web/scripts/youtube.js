@@ -1,4 +1,4 @@
-import { $1, css, addStyle, key, parseUrl } from './html'
+import { $1, css, addStyle, key, parseUrl } from './html.js'
 
 let showProgress = true
 let isTheater = false

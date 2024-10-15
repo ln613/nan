@@ -1,4 +1,4 @@
-import { NF } from "./utils"
+import { NF } from "./utils.js"
 
 const scripts = ['5050', 'eztv', 'javlibrary', 'kuaishou', 'music.apple', 'real-debrid', 'visualstudio', 'xsnvshen', 'youtube']
 
