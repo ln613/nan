@@ -28,7 +28,7 @@ export const handler = makeApi({
     post: {
       search: (q, b) => _search({ doc: q.doc, ...b }),
       sample: (q, b) => sample(q.doc, +b.size, b.sort),
-      save: (q, b) => replace(q.doc, b, q.id),
+      save: (q, b) => replace(q.doc, b, q.id), // q.id specify the identity field
       flat: (q, b) => flat(q.doc, b.agg),
       // update: async (q, b) => {
       //   await connect(b.cluster, b.db)

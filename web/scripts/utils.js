@@ -92,7 +92,7 @@ export const dbInit = (db, docs) =>
           const ps = mapValue(params, v => v.toString())
           return get(DB(db, d, 'doc', ps))
         },
-        save: data => post(DB(db, d, 'save'), data),
+        save: (data, id = 'id') => post(DB(db, d, 'save', { id }), data),
       },
     ])
   )
