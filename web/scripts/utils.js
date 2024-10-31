@@ -86,7 +86,7 @@ export const dbInit = (db, docs) =>
       d,
       {
         all: () => get(DB(db, d, 'doc')),
-        flat: agg => get(DB(db, d, 'flat', { agg })),
+        flat: agg => get(DB(db, d, 'flat', { agg: encodeURIComponent(agg) })),
         getById: id => get(DB(db, d, 'getById', { id: id.toString() })),
         search: params => {
           const ps = mapValue(params, v => v.toString())

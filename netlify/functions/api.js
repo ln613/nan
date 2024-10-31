@@ -11,6 +11,7 @@ import {
   maxId,
   clusters,
 } from './utils/db'
+import { tap } from './utils'
 // import { initAI, chat } from './utils/ai'
 
 export const handler = makeApi({
@@ -21,7 +22,7 @@ export const handler = makeApi({
       count: q => count(q.doc),
       getById: q => getById(q.doc, q.id),
       search: q => _search({ doc: q.doc, ...q.params }),
-      flat: q => flat(q.doc, q.agg),
+      flat: q => flat(q.doc, tap(q).agg),
       maxId: q => maxId(q.doc),
     },
     post: {
