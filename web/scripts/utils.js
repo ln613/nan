@@ -23,7 +23,7 @@ export const post = (url, data) =>
 
 export const DB = (db, doc, type, params) =>
   `${NF}api?type=${type}&doc=${doc}&db=${db}${
-    params ? `&params=${JSON.stringify(params)}` : ''
+    params ? Object.entries(params).map(([k, v]) => `&${k}=${v}`) : ''
   }`
 
 export const sleep = n => new Promise(r => setTimeout(r, n))
