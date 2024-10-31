@@ -1,4 +1,5 @@
 import { HOST } from "./utils.js"
+import * as H from "./html.js"
 
 const scripts = ['5050', 'eztv', 'javdb', 'javlibrary', 'kuaishou', 'music.apple', 'real-debrid', 'visualstudio', 'xsnvshen', 'youtube']
 
@@ -22,6 +23,7 @@ const load = (src, isModule) =>
   })
 
 const loadAll = async () => {
+  window.H = H
   load('out.css')
   await load('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js')
   // const loadReact = async () => {
