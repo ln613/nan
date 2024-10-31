@@ -1,4 +1,5 @@
-import { Url, $3 } from './html.js'
+import { Url, $3, appendChild, $1 } from './html.js'
+import { dbInit } from './utils.js'
 
 const db = dbInit('pcn.dmm', ['model'])
 
