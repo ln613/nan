@@ -15,8 +15,10 @@ const init = async () => {
         const code = `M0${+m1[0].code.slice(1) + 1}`
         const javdb = Url.pathname.slice(Url.pathname.lastIndexOf('/') + 1)
         await db.model.save({ code, jname: names.join(','), rate: 900, javdb }, 'code')
+        window.location.reload()
+      } else {
+        window.location.href = `http://localhost:691/movies/model/${m[0].code}`
       }
-      //const m = await db.model.flat(`p_jname,name,code,javdb&m_jname=in$${names.join(';')}`)
     });
   }
 }
