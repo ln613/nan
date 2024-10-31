@@ -12,7 +12,7 @@ const init = async () => {
     $1('#import_model').addEventListener('click', async () => {
       if (isNew) {
         const m1 = await db.model.flat(`p_code&m_code=regex$M0&s_code=-1&l_1`)
-        const code = `M0${+m1.code.slice(1) + 1}`
+        const code = `M0${+m1[0].code.slice(1) + 1}`
         const javdb = Url.pathname.slice(Url.pathname.lastIndexOf('/') + 1)
         await db.model.save({ code, jname: names.join(','), rate: 900, javdb }, 'code')
       }
