@@ -17,7 +17,7 @@ const init = async () => {
       window.location.reload()
     })
 
-    ms.forEeach((m, i) => {
+    ms.forEach((m, i) => {
       appendChild('.section-title h2', `<a href="#" id="update_model_${i+1}">Update ${m.jname}</a>`)
       $1(`#update_model_${i+1}`).addEventListener('click', async () => {
         window.location.href = `http://localhost:691/movies/model/${m.code}`
