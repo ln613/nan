@@ -12,6 +12,7 @@ import {
   clusters,
 } from './utils/db'
 import { tap } from './utils'
+import { translate } from './utils/google'
 // import { initAI, chat } from './utils/ai'
 
 export const handler = makeApi({
@@ -24,6 +25,9 @@ export const handler = makeApi({
       search: q => _search({ doc: q.doc, ...q.params }),
       flat: q => flat(q.doc, tap(q).agg),
       maxId: q => maxId(q.doc),
+
+      // google
+      translate: q => translate(q.txt, q.to)
     },
     post: {
       search: (q, b) => _search({ doc: q.doc, ...b }),
