@@ -1,4 +1,4 @@
-import { Url, $3, appendChild, $1 } from './html.js'
+import { Url, $3, appendChild, $1, onclick } from './html.js'
 import { dbInit, tap } from './utils.js'
 
 const db = dbInit('pcn.dmm', ['model'])
@@ -23,6 +23,8 @@ const init = async () => {
         window.location.href = `http://localhost:691/movies/model/${m.code}`
       })
     })
+  } else if (Url.pathname.startsWith('/v/')) {
+    $3('button.copy-to-clipboard').forEach(b => onclick(b, x => window.open(`https://real-debrid.com/torrents?m=${attr(x, 'data-clipboard-text')}`)))
   }
 }
 

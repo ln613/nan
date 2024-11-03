@@ -6,11 +6,11 @@ const SpeechRecognition =
 let speechRecognition
 
 export const $1 = (s, d) =>
-  (d || document).querySelector(s)
+  isStr(s) ? (d || document).querySelector(s) : s
 export const $2 = (s, d) =>
-  (d || document).querySelectorAll(s)
+  isStr(s) ? (d || document).querySelectorAll(s) : s
 export const $3 = (s, d) =>
-  Array.from((d || document).querySelectorAll(s))
+  isStr(s) ? Array.from((d || document).querySelectorAll(s)) : s
 export const children = s => Array.from($1(s)?.children || [])
 
 export let Url
@@ -33,6 +33,14 @@ export const css = (s, p, v) => {
   if (e) {
     if (v) e.style.setProperty(p, v)
     else return e.style.getPropertyValue(p)
+  }
+}
+
+export const attr = (s, p, v) => {
+  var e = $1(s)
+  if (e) {
+    if (v) e.setAttribute(p, v)
+    else return e.getAttribute(p)
   }
 }
 
