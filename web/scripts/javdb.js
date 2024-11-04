@@ -1,4 +1,4 @@
-import { Url, $3, appendChild, $1, onclick } from './html.js'
+import { Url, $3, appendChild, $1, onclick, attr } from './html.js'
 import { dbInit, tap } from './utils.js'
 
 const db = dbInit('pcn.dmm', ['model'])
