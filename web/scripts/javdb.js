@@ -24,7 +24,7 @@ const init = async () => {
       })
     })
   } else if (Url.pathname.startsWith('/v/')) {
-    $3('button.copy-to-clipboard').forEach(b => onclick(b, x => window.open(`https://real-debrid.com/torrents?m=${attr(x, 'data-clipboard-text')}`)))
+    $3('button.copy-to-clipboard').forEach(b => onclick(b, () => window.open(`https://real-debrid.com/torrents?m=${attr(b, 'data-clipboard-text')}`)))
   }
 }
 
