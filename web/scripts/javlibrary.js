@@ -1,4 +1,4 @@
-import { Url, value, click } from './html.js'
+import { Url, value, click, $1 } from './html.js'
 import { wrapRD, trimUrl, rgSize } from './utils.js'
 
 const m = Url.params.m
