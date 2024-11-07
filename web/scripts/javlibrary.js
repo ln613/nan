@@ -1,10 +1,10 @@
-import { Url, val, click } from './html.js'
+import { Url, value, click } from './html.js'
 import { wrapRD, trimUrl, rgSize } from './utils.js'
 
 const m = Url.params.m
 
 if (m) {
-  val('#idsearchbox', m)
+  value('#idsearchbox', m)
   click('#idsearchbutton')
 }
 
