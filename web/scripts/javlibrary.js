@@ -8,8 +8,12 @@ if (m) {
   click('#idsearchbutton')
 }
 
-trimUrl('https://www.javlibrary.com/en/redirect.php?url=')
+const all = $1('#video_comments_all a')
 
-wrapRD()
-
-rgSize()
+if (all) {
+  click(all)
+} else {
+  trimUrl('https://www.javlibrary.com/en/redirect.php?url=')
+  wrapRD()
+  rgSize()
+}
