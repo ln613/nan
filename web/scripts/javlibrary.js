@@ -13,6 +13,7 @@ const all = $1('#video_comments_all a')
 if (all) {
   click(all)
 } else {
+  $3('.showalltext').forEach(click)
   trimUrl('https://www.javlibrary.com/en/redirect.php?url=')
   wrapRD()
   rgSize()
