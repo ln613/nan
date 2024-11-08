@@ -11,7 +11,7 @@ if (m) {
 }
 
 const order = x => {
-  const i = sorts.findIndex(y => x.innerText.includes(y))
+  const i = sorts.findIndex(y => x.innerHTML.includes(y))
   return i == -1 ? 100 : i
 }
 
