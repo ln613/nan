@@ -10,6 +10,11 @@ if (m) {
   click('#idsearchbutton')
 }
 
+const order = x => {
+  const i = sorts.findIndex(y => x.innerText.includes(y))
+  return i == -1 ? 100 : i
+}
+
 const all = $1('#video_comments_all a')
 
 if (all) {
@@ -22,7 +27,3 @@ if (all) {
   rgSize()
 }
 
-const order = x => {
-  const i = sorts.findIndex(y => x.innerText.includes(y))
-  return i == -1 ? 100 : i
-}
