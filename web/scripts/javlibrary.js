@@ -1,7 +1,7 @@
 import { Url, value, click, $1, $3 } from './html.js'
 import { wrapRD, trimUrl, rgSize } from './utils.js'
 
-const sorts = ['https://pics.dmm.co.jp', 'Reducing_Mosaic', 'Mosaic_reduce', 'rapidgator.net']
+const sorts = ['pixhost', 'https://pics.dmm.co.jp', 'Reducing_Mosaic', 'Mosaic_reduce', 'rapidgator.net']
 
 const m = Url.params.m
 
