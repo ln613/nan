@@ -1,7 +1,7 @@
 import { HOST } from "./utils.js"
 import * as H from "./html.js"
 
-const scripts = ['5050', 'eztv', 'javdb', 'javlibrary', 'kuaishou', 'music.apple', 'real-debrid', 'visualstudio', 'xsnvshen', 'youtube']
+const scripts = ['5050', 'eztv', 'javdb', 'javlibrary', 'kuaishou', 'music.apple', 'real-debrid', 'repidgator.net', 'visualstudio', 'xsnvshen', 'youtube']
 
 const cfgs = {
   js: { tag: 'script', src: 'src', type: ['type', 'text/javascript'] },
