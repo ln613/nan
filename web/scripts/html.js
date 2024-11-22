@@ -94,6 +94,14 @@ export const value = (s, t) => {
   if (e instanceof HTMLInputElement) e.value = t
 }
 
+export const options = (s, opts) => {
+  const e = $1(s)
+  if (e instanceof HTMLSelectElement) {
+    opts = opts.map(o => isStr(o) ? [o, o] : o)
+    e.innerHTML = opts.map(`<option value"${o[0]}">${o[1]}</option>`)
+  }
+}
+
 export const click = s => {
   $1(s)?.click()
 }
@@ -190,7 +198,7 @@ export const download = (url, file) => {
 
 export const waitFor = async s => {
   while (true) {
-    const t = $1(s)
+    const t = isStr(s) ? $1(s) : s
     if (t) return t
     await sleep(100)
   }

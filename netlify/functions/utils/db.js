@@ -34,6 +34,8 @@ export const connect = async clusterAndDb => {
   }
 }
 
+export const listDBs = () => db.admin().listDatabases().then(r => r.databases.map(x => x.name).filter(x => x != 'admin' && x != 'local'))
+
 export const initdocs = docs => {
   const f = k => r => db.collection(k).insertMany(docs[k])
   return Promise.all(
@@ -51,7 +53,7 @@ export const backup = () =>
     fromPairs(l.map((d, i) => [allDocs[i], d]))
   )
 
-export const list = () => Object.keys(db)
+export const listDocs = () => db.listCollections().toArray().then(r => r.map(x => x.name))
 
 export const count = doc => db.collection(doc).count()
 

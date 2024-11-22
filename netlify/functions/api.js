@@ -1,16 +1,5 @@
 import { makeApi } from './utils/http'
-import {
-  connect,
-  get,
-  count,
-  sample,
-  search,
-  flat,
-  replace,
-  getById,
-  maxId,
-  clusters,
-} from './utils/db'
+import { connect, listDocs, listDBs, get, count, sample, search, flat, replace, getById, maxId, clusters } from './utils/db'
 import { tap } from './utils'
 import { translate } from './utils/google'
 // import { initAI, chat } from './utils/ai'
@@ -19,6 +8,8 @@ export const handler = makeApi({
   handlers: {
     get: {
       test: q => Promise.resolve(clusters),
+      dbs: q => listDBs(),
+      docs: q => listDocs(),
       doc: q => get(q.doc),
       count: q => count(q.doc),
       getById: q => getById(q.doc, q.id),

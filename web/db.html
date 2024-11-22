@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+  <title>db</title>
+</head>
+<body>
+  <select id="sClusters"></select>
+  <select id="sDBs"></select>
+  <select id="sDocs"></select>
+</body>
+</html>
+
+<script>
+  const iid = setInterval(() => {
+      if (H) {
+        clearInterval(iid)
+        const clusters = ['algo', 'chatuni', 'mylist', 'pcn', 'vttc']
+        H.options('sClusters', clusters)
+      }
+    },
+    100
+  )
+</script>
