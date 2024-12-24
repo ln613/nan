@@ -7,18 +7,29 @@
   <title>db</title>
 </head>
 <body>
-  <select id="sClusters"></select>
   <select id="sDBs"></select>
-  <select id="sDocs"></select>
+  <div>Match: <input id="tMatch" /></div>
+  <button id="btnFlat">Flat</button>
 </body>
 </html>
 
 <script>
-  const iid = setInterval(() => {
-      if (H) {
+  //const host = 'https://nan-li.netlify.app/.netlify/functions/'
+  const host = 'http://localhost:704/.netlify/functions/'
+  const DB = (type, db, doc) => `${host}api?type=${type}&db=${db}&doc=${doc}`
+  const get = url => fetch(url).then(r => r.json())
+  const dbs = [['pcn.dmm-model', 'dmm'], ['vttc.vttc-tournaments', 'vttc'], ['vttc.vttc-players', 'vttc players']]
+
+  const iid = setInterval(
+    async () => {
+      if (typeof(H) !== 'undefined') {
         clearInterval(iid)
-        const clusters = ['algo', 'chatuni', 'mylist', 'pcn', 'vttc']
-        H.options('sClusters', clusters)
+        H.options('#sDBs', dbs)
+        H.onclick('#btnFlat', async () => {
+          const db = H.$1('#sDBs').value.split('-')
+          const r = await get(`${DB('flat', db[0], db[1])}&agg=m_${H.$1('#tMatch').value}`)
+          console.log(r)
+        })
       }
     },
     100

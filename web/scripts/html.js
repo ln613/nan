@@ -91,14 +91,14 @@ export const text = (s, t) => {
 
 export const value = (s, t) => {
   const e = $1(s)
-  if (e instanceof HTMLInputElement) e.value = t
+  if (e instanceof HTMLInputElement || e instanceof HTMLSelectElement) e.value = t
 }
 
 export const options = (s, opts) => {
   const e = $1(s)
   if (e instanceof HTMLSelectElement) {
     opts = opts.map(o => isStr(o) ? [o, o] : o)
-    e.innerHTML = opts.map(`<option value"${o[0]}">${o[1]}</option>`)
+    e.innerHTML = opts.map(o => `<option value="${o[0]}">${o[1]}</option>`).join('')
   }
 }
 
@@ -148,6 +148,10 @@ export const key = (k, f) => {
 
 export const onclick = (s, f) => {
   $1(s)?.addEventListener('click', e => f(e))
+}
+
+export const onchange = (s, f) => {
+  $1(s)?.addEventListener('change', e => f(e))
 }
 
 const enterFullscreen = () => {

@@ -36,6 +36,22 @@ export const connect = async clusterAndDb => {
 
 export const listDBs = () => db.admin().listDatabases().then(r => r.databases.map(x => x.name).filter(x => x != 'admin' && x != 'local'))
 
+export const listDocs = () => db.listCollections().toArray().then(r => r.map(x => x.name))
+
+export const listAllDocs = async cs => {
+  const clusters = {}
+  for (let c of cs.split(',')) {
+    await connect(c)
+    const dbs = await listDBs().then(r => Object.fromEntries(r.map(x => [x, []])))
+    for (let d in dbs) {
+      await connect(`${c}.${d}`)
+      dbs[d] = await listDocs()
+    }
+    clusters[c] = dbs
+  }
+  return clusters
+}
+
 export const initdocs = docs => {
   const f = k => r => db.collection(k).insertMany(docs[k])
   return Promise.all(
@@ -52,8 +68,6 @@ export const backup = () =>
   Promise.all(allDocs.map(get)).then(l =>
     fromPairs(l.map((d, i) => [allDocs[i], d]))
   )
-
-export const listDocs = () => db.listCollections().toArray().then(r => r.map(x => x.name))
 
 export const count = doc => db.collection(doc).count()
 
@@ -105,7 +119,7 @@ const Ops = {
 }
 
 export const flat = async (doc, agg) => {
-  // agg = 'm_id=1&u_songs&p_id,name&s_date'
+  // agg = 'm_id=1,firstName=in$Nan;Fiona,name=regex$fan&u_songs&p_id,name=-1&s_type,date=-1'
   console.log(agg)
   const stages = !agg
     ? [{ $match: {} }]
