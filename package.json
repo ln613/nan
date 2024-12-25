@@ -4,7 +4,9 @@
   "description": "",
   "main": "api.js",
   "scripts": {
-    "dev": "netlify env:import .env & netlify functions:serve --port 704"
+    "func": "netlify env:import .env & netlify functions:serve --port 704",
+    "build": "webpack build",
+    "dev": "webpack serve"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +16,24 @@
     "cheerio": "1.0.0-rc.12",
     "cloudinary": "^2.5.1",
     "lodash": "^4.17.21",
+    "mobx": "^6.13.5",
+    "mobx-react-lite": "^4.1.0",
     "mongodb": "^5.3.0",
     "node-fetch": "^3.3.2",
     "openai": "^4.48.2",
-    "puppeteer": "^21.6.0"
+    "puppeteer": "^21.6.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "html-webpack-plugin": "^5.6.3",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   }
 }
