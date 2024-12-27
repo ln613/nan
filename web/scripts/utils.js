@@ -8,8 +8,8 @@ export const isDev = false // process.env.NODE_ENV === 'development'
 export const LH = 'http://localhost:690/api/'
 export const HOST = // isDev
   // 'http://localhost:704/'
-  // 'http://localhost:8081/'
-  'https://nan-li.netlify.app/'
+   'http://localhost:8081/'
+  //'https://nan-li.netlify.app/'
 export const NF = `${HOST}.netlify/functions/`
 
 export const extract = (url, selectors) =>

@@ -63,7 +63,7 @@ export const makeApi =
         const r = await t(q, body, event)
         return res(r || 'done', 200, nocache, q.returnType)
       },
-      e => res(e, 500)
+      e => res(e?.data?.message, 500)
     )
   }
 
