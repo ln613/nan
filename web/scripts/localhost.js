@@ -36,6 +36,7 @@ if ($1('address')?.innerText.includes('server running @ localhost')) {
 }
 
 const render = () => {
+  if ($1('.vi')) remove('.vi')
   if (videos.length > 0) prependVideo()
   if (imgs.length > 0) prependImg()
 }
