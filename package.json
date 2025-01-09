@@ -7,7 +7,8 @@
     "func": "netlify env:import .env & netlify functions:serve --port 704",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "flutter": "flutter build web"
   },
   "author": "",
   "license": "ISC",
