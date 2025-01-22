@@ -1,3 +1,80 @@
-body {
-  margin: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* color */
+  .black  { @apply text-black }
+  .blue   { @apply text-blue-600 }
+  .green  { @apply text-green-600 }
+  .orange { @apply text-orange-600 }
+  .purple { @apply text-purple-600 }
+  .red    { @apply text-red-600 }
+  .yellow { @apply text-yellow-600 }
+  .white  { @apply text-white }
+  .Black  { @apply bg-black }
+  .Blue   { @apply bg-blue-600 }
+  .Green  { @apply bg-green-600 }
+  .Orange { @apply bg-orange-600 }
+  .Purple { @apply bg-purple-600 }
+  .Red    { @apply bg-red-600 }
+  .Yellow { @apply bg-yellow-600 }
+  .White  { @apply bg-white }
+
+  /* border */
+  .brx    { @apply rounded-sm }
+  .brs    { @apply rounded }
+  .brm    { @apply rounded-md }
+  .brl    { @apply rounded-lg }
+  .br1    { @apply rounded-xl }
+  .br2    { @apply rounded-2xl }
+  .br3    { @apply rounded-3xl }
+
+  /* flex */
+  .f      { @apply flex }
+  .fc     { @apply flex flex-col }
+  .jcfs   { @apply justify-start }
+  .jcfe   { @apply justify-end }
+  .jcc    { @apply justify-center }
+  .jcsb   { @apply justify-between }
+  .jcsa   { @apply justify-around }
+  .jcse   { @apply justify-evenly }
+  .jcs    { @apply justify-stretch }
+  .aifs   { @apply items-start }
+  .aife   { @apply items-end }
+  .aic    { @apply items-center }
+  .aib    { @apply items-baseline }
+  .ais    { @apply items-stretch }
+
+  /* font */
+  .fb     { @apply font-bold }
+  .fi     { @apply italic }
+  .fsx    { @apply text-xs }
+  .fss    { @apply text-sm }
+  .fsm    { @apply text-base }
+  .fsl    { @apply text-lg }
+  .fs1    { @apply text-xl }
+  .fs2    { @apply text-2xl }
+  .fs3    { @apply text-3xl }
+  .fs4    { @apply text-4xl }
+  .fs5    { @apply text-5xl }
+  .fs6    { @apply text-6xl }
+  .fs7    { @apply text-7xl }
+  .fs8    { @apply text-8xl }
+  .fs9    { @apply text-9xl }
+  .h2     { @apply text-2xl fb }
+}
+
+@layer components {
+  .btn    { @apply font-bold py-2 px-4 brs fss }
+  .btn-blue { @apply Blue white hover:bg-blue-800 }
+  .btn-green{ @apply Green white hover:bg-green-800 }
+  .btn-red{ @apply Red white hover:bg-red-800 }
+  .card   { @apply fc p-4 hover:bg-gray-100 br1 border border-gray-200 transition-all hover:shadow-md }
+  .cards  { @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 }
+
+  /* form */
+  .form-lable { @apply block mb-2 fss font-medium black }
+  .input  { @apply bg-gray-50 border border-gray-300 black fss brl focus:ring-blue-500 focus:border-blue-500 block  p-2.5 }
+  .checkbox { @apply w-4 h-4 blue bg-gray-100 border-gray-300 brs focus:ring-blue-500 }
 }
