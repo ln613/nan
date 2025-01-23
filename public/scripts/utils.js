@@ -7,13 +7,13 @@ export const isDev = false // process.env.NODE_ENV === 'development'
 
 export const LH = 'http://localhost:690/api/'
 export const HOST = // isDev
-  // 'http://localhost:704/'
+  'http://192.168.1.68:704/'
   // 'http://localhost:8081/'
-  'https://nan-li.netlify.app/'
+  // 'https://nan-li.netlify.app/'
 export const NF = `${HOST}.netlify/functions/`
 
 export const extract = (url, selectors) =>
-  get(`${NF}web?type=extractUrl&url=${url}&selectors=${selectors}`)
+  get(`${NF}web?type=extractUrl&url=${url}&selectors=${encodeURIComponent(selectors)}`)
 export const extractHTML = (html, selectors) =>
   post(`${NF}web?type=extractHtml`, { html, selectors })
 
@@ -131,7 +131,7 @@ export const rgSize = () => {
           )
         } else if (a.href.includes('extmatrix.com')) {
           const l = a.href.indexOf('extmatrix.com') - 12
-          extract(a.href.slice(l), '#content h1').then(
+          extract(tap(a.href.slice(l)), '#content h1').then(
             r => (a.innerText = `${a.innerText} - ${tap(r)[0]}`)
           )
         }
