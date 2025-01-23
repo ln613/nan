@@ -1,5 +1,5 @@
 import { Url, value, click, $1, $3 } from './html.js'
-import { wrapRD, trimUrl, rgSize } from './utils.js'
+import { wrapLA, trimUrl, rgSize } from './utils.js'
 
 const sorts = ['pixhost', 'https://pics.dmm.co.jp', 'Reducing_Mosaic', 'Mosaic_reduce', 'rapidgator.net']
 
@@ -26,4 +26,3 @@ if (all) {
   wrapLA()
   rgSize()
 }
-
