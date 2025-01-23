@@ -115,15 +115,26 @@ export const wrapRD = wrapUrl(
   s => `https://real-debrid.com/downloader?m=https://${s}`
 )
 
+export const wrapLA = wrapUrl(
+  ['rapidgator.net', 'rg.to', 'extmatrix.com', 'filejoker.net', 'nitroflare.com', 'k2s.cc', 'katfile.com'],
+  s => `https://leechall.io/downloader?m=https://${s}`
+)
+
 export const rgSize = () => {
   setTimeout(() => {
     $3a()
-      .filter(a => a.href.includes('rapidgator.net'))
       .forEach(a => {
-        const l = a.href.indexOf('rapidgator.net') - 8
-        extract(a.href.slice(l), '.file-descr div > strong').then(
-          r => (a.innerText = `${a.innerText} - ${r}`)
-        )
+        if (a.href.includes('rapidgator.net')) {
+          const l = a.href.indexOf('rapidgator.net') - 8
+          extract(a.href.slice(l), '.file-descr div > strong').then(
+            r => (a.innerText = `${a.innerText} - ${r}`)
+          )
+        } else if (a.href.includes('extmatrix.com')) {
+          const l = a.href.indexOf('extmatrix.com') - 12
+          extract(a.href.slice(l), '#content h1').then(
+            r => (a.innerText = `${a.innerText} - ${r[0]}`)
+          )
+        }
       })
   }, 1000)
 }

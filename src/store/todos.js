@@ -96,7 +96,7 @@ class Todos {
   get filtered() { return this.all.filter(x => (!this.filter.type || this.filter.type == x.type) && (!this.filter.subtype || this.filter.subtype == x.subtype)) }
   get ccs() { return this.filtered.filter(x => x.isCC) }
   get chequings() { return this.filtered.filter(x => x.isChequing) }
-  get paymentSources() { return this.filtered.filter(x => x.isPaymentSource) }
+  get paymentSources() { return this.all.filter(x => x.isPaymentSource) }
   get paymentOptions() { return this.paymentSources.map(x => ({ value: x.id, text: `${x.title} - ${x.accounts[0]}` })) }
   get payments() { return this.filtered.filter(x => x.isPayment) }
   get oneTimePayments() { return this.payments.filter(x => !x.frequency) }
