@@ -132,7 +132,7 @@ export const rgSize = () => {
         } else if (a.href.includes('extmatrix.com')) {
           const l = a.href.indexOf('extmatrix.com') - 12
           extract(a.href.slice(l), '#content h1').then(
-            r => (a.innerText = `${a.innerText} - ${r[0]}`)
+            r => (a.innerText = `${a.innerText} - ${tap(r)[0]}`)
           )
         }
       })
