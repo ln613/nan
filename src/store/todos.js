@@ -89,6 +89,7 @@ class Todo {
 }
 
 class Todos {
+  isSignedIn = false
   all = []
   todo
   filter = new TodoFilter()
