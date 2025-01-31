@@ -3,7 +3,7 @@ import { load } from 'cheerio'
 import { difference, differenceBy, flatten, union, unionBy } from 'lodash'
 // import puppeteer from 'puppeteer'
 import { trimLeft } from './string'
-import { search, save, get } from '.'
+import { search, save, get, tap } from '.'
 // import _download from 'download'
 import fs from 'fs'
 

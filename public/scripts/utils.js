@@ -7,10 +7,12 @@ export const isDev = false // process.env.NODE_ENV === 'development'
 
 export const LH = 'http://localhost:690/api/'
 export const HOST = // isDev
-  'http://192.168.1.68:704/'
-  // 'http://localhost:8081/'
-  // 'https://nan-li.netlify.app/'
-export const NF = `${HOST}.netlify/functions/`
+  'http://localhost:5173/'
+  //'http://localhost:8081/'
+  //'https://nan-li.netlify.app/'
+export const NF =
+  //`http://localhost:704/.netlify/functions/`
+  `https://nan-li.netlify.app/.netlify/functions/`
 
 export const extract = (url, selectors) =>
   get(`${NF}web?type=extractUrl&url=${url}&selectors=${encodeURIComponent(selectors)}`)
@@ -115,28 +117,31 @@ export const wrapRD = wrapUrl(
   s => `https://real-debrid.com/downloader?m=https://${s}`
 )
 
+const las = {
+  'rapidgator.net': ['.file-descr div > strong'],
+  'www.extmatrix.com': ['#content h1', r => r[0].slice(r[0].indexOf('(') + 1, r[0].indexOf(')'))],
+  'filejoker.net': ['.file-size'],
+  'nitroflare.com': ['#container .content #view span span'],
+  'k2s.cc': [], //['.video-info', r => r.slice(r.indexOf('Size:') + 5, r.indexOf('Antivirus'))]
+}
+
 export const wrapLA = wrapUrl(
-  ['rapidgator.net', 'rg.to', 'extmatrix.com', 'filejoker.net', 'nitroflare.com', 'k2s.cc', 'katfile.com'],
+  Object.keys(las),
   s => `https://leechall.io/downloader?m=https://${s}`
 )
 
 export const rgSize = () => {
-  setTimeout(() => {
-    $3a()
-      .forEach(a => {
-        if (a.href.includes('rapidgator.net')) {
-          const l = a.href.indexOf('rapidgator.net') - 8
-          extract(a.href.slice(l), '.file-descr div > strong').then(
-            r => (a.innerText = `${a.innerText} - ${r}`)
-          )
-        } else if (a.href.includes('extmatrix.com')) {
-          const l = a.href.indexOf('extmatrix.com') - 12
-          extract(tap(a.href.slice(l)), '#content h1').then(
-            r => (a.innerText = `${a.innerText} - ${tap(r)[0]}`)
-          )
-        }
-      })
-  }, 1000)
+  setTimeout(() =>
+    $3a().forEach(a => { Object.keys(las).filter(k => las[k].length > 0).forEach(k => {
+      if (a.href.includes(k)) {
+        const l = a.href.indexOf(k) - 8
+        extract(a.href.slice(l), las[k][0]).then(
+          r => (a.innerText = `${a.innerText} - ${las[k].length > 1 ? las[k][1](r) : r}`)
+        )
+      }
+    })})
+    , 1000
+  )
 }
 
 export const trimUrl = t =>
