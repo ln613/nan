@@ -7,9 +7,9 @@ export const isDev = false // process.env.NODE_ENV === 'development'
 
 export const LH = 'http://localhost:690/api/'
 export const HOST = // isDev
-  'http://localhost:5173/'
+  //'http://localhost:5173/'
   //'http://localhost:8081/'
-  //'https://nan-li.netlify.app/'
+  'https://nan-li.netlify.app/'
 export const NF =
   //`http://localhost:704/.netlify/functions/`
   `https://nan-li.netlify.app/.netlify/functions/`
