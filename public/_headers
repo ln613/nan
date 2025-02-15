@@ -1,2 +1,2 @@
 /*  
-  Content-Security-Policy: script-src 'self' https://nan-li.netlify.app;
+  Content-Security-Policy: script-src 'self' 'unsafe-inline' 'unsafe-eval' https://nan-li.netlify.app;
