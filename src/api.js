@@ -1,4 +1,4 @@
-const base = (type, doc) => `https://nan-li.netlify.app/.netlify/functions/api?type=${type}&db=mylist.note&doc=${doc}`
+const base = (type, doc) => `/.netlify/functions/api?type=${type}&db=mylist.note&doc=${doc}`
 
 export const get = (type, doc) => fetch(base(type, doc)).then(r => r.json())
 
