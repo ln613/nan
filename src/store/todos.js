@@ -1,7 +1,9 @@
 import { makeAutoObservable, when } from "mobx"
 import { max } from 'lodash'
-import { get, save } from '../api'
+import { api } from '../api'
 import { tap } from '../utils/lang'
+
+const { get, save } = api('mylist.note')
 
 const Types = {
   payment: ['bill', 'credit card', 'membership', 'real estate', 'tax'],
@@ -119,7 +121,7 @@ class Todos {
     if (!this.todo.id) this.todo.id = max(this.all.map(x => x.id)) + 1
     if (this.todo.amount) this.todo.amount = +this.todo.amount
     if (this.todo.cc) this.todo.cc = +(this.todo.cc.id || this.todo.cc)
-    await save('todos', this.todo)
+    await save({ doc: 'todos' }, this.todo)
     this.all = []
     this.load()
     this.todo = null
@@ -130,7 +132,7 @@ class Todos {
   }
 
   load = async () => {
-    this.all = await get('doc', 'todos').then(r => r.map(x => new Todo(x)))
+    this.all = await get({ type: 'doc', doc: 'todos' }).then(r => r.map(x => new Todo(x)))
     this.autoPayments.forEach(p => p.cc = this.paymentSources.find(s => s.id === p.cc))
   }
 
