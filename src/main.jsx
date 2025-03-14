@@ -4,6 +4,7 @@ import './index.css'
 import Todo from './components/Todo.jsx'
 import ImgList from './components/ImgList.jsx'
 import Navigation from './components/Navigation.jsx'
+import DBTool from './components/DBTool.jsx'
 import { OAuth } from './components/oauth.jsx'
 import app from './store/app.js'
 import { observer } from 'mobx-react-lite'
@@ -18,12 +19,14 @@ const AppRoutes = observer(() => {
   return (
     <OAuth>
       <div className="flex flex-col min-h-screen">
+        <Navigation />
         <main className="flex-grow">
           <Routes>
             <Route path="/xsns_models" element={<ImgList list={xsnsModels} />} />
             <Route path="/xsns_albums" element={<ImgList list={xsnsAlbums} />} />
             <Route path="/xsns_images" element={<ImgList list={xsnsImages} />} />
             <Route path="/todo" element={<Todo />} />
+            <Route path="/dbtool" element={<DBTool />} />
           </Routes>
         </main>
       </div>

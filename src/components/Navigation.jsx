@@ -52,6 +52,16 @@ export const Navigation = observer(() => {
           >
             Todo App
           </Link>
+          <Link
+            to="/dbtool"
+            className={`px-3 py-2 rounded-md ${
+              location.pathname.includes('/dbtool')
+                ? 'bg-gray-900 text-white'
+                : 'text-gray-300 hover:bg-gray-700'
+            }`}
+          >
+            DB Tool
+          </Link>
           {authStore.isSignedIn && (
             <button
               onClick={handleSignOut}
