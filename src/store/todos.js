@@ -109,6 +109,11 @@ class Todos {
   get todos() { return this.filtered.filter(x => x.isTodo) }
   get isEdit() { return !!this.todo }
 
+  signOut = () => {
+    this.isSignedIn = false;
+    localStorage.removeItem('googleToken');
+  }
+
   add = () => {
     this.todo = new Todo()
   }

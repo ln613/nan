@@ -179,35 +179,26 @@ export const imgList = () => {
   const margin = css('body', 'margin')
   const padding = css('body', 'padding')
 
-  key('Escape', () => {
-    if ($1('#full_vi')) {
-      remove('#full_vi')
-      setMargin(true)
-    } else if ($1('.vi')) {
-      remove('.vi')
-      setMargin(true)
-    } else {
-      const links = $3('a').filter(x => x.href).map(x => x.href.toLowerCase())
-      const imgTags = $3('img').filter(x => x.src).map(x => x.src.toLowerCase())
-      const all = links.concat(imgTags)
-      imgs = all.filter(x => IMGS.some(y => x.endsWith(y)))
-      videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
-      render()
+  const getAllImgs = () => {
+    if (window.nan_imgLists) {
+      if (window.nan_imgLists.rows) rows = window.nan_imgLists.rows
+      return window.nan_imgLists.list
     }
-  })
-
-  key('1', () => setRows(1))
-  key('2', () => setRows(2))
-  key('3', () => setRows(3))
-  key('4', () => setRows(4))
-  key('q', () => page(-1))
-  key('a', () => page(1))
-  key('ArrowRight', () => next(1))
-  key('ArrowLeft', () => next(-1))
+    const links = $3('a').filter(x => x.href).map(x => x.href.toLowerCase())
+    const imgTags = $3('img').filter(x => x.src).map(x => x.src.toLowerCase())
+    return links.concat(imgTags)
+  }
 
   const setMargin = reset => {
     css('body', 'margin', reset ? margin : '0px')
     css('body', 'padding', reset ? padding : '0px')
+  }
+
+  const renderList = () => {
+    const all = getAllImgs()
+    imgs = all.filter(x => IMGS.some(y => x.endsWith(y)))
+    videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
+    render()
   }
 
   const render = () => {
@@ -262,4 +253,27 @@ export const imgList = () => {
       else v.src = videos[idx]
     }
   }
+
+  key('Escape', () => {
+    if ($1('#full_vi')) {
+      remove('#full_vi')
+      setMargin(true)
+    } else if ($1('.vi')) {
+      remove('.vi')
+      setMargin(true)
+    } else {
+      renderList()
+    }
+  })
+
+  key('1', () => setRows(1))
+  key('2', () => setRows(2))
+  key('3', () => setRows(3))
+  key('4', () => setRows(4))
+  key('q', () => page(-1))
+  key('a', () => page(1))
+  key('ArrowRight', () => next(1))
+  key('ArrowLeft', () => next(-1))
+
+  setTimeout(() => window.nan_imgLists?.auto && renderList(), 200)
 }

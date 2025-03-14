@@ -5,6 +5,20 @@ import { translate } from './utils/google'
 import { cdupload, cdVersion, cdList } from './utils/cd'
 // import { initAI, chat } from './utils/ai'
 
+// Define public endpoints that don't require authentication
+const publicEndpoints = [
+  { method: 'get', type: 'test' },
+  { method: 'get', type: 'translate' },
+  { method: 'get', type: 'doc' },
+  { method: 'get', type: 'dbs' },
+  { method: 'get', type: 'docs' },
+  { method: 'get', type: 'allDocs' },
+  { method: 'post', type: 'save' },
+  { method: 'post', type: 'search' },
+  { method: 'post', type: 'flat' },
+  // Add other public endpoints if needed
+];
+
 export const handler = makeApi({
   handlers: {
     get: {
@@ -46,6 +60,7 @@ export const handler = makeApi({
   connectDB: connect,
   // initAI: initAI,
   nocache: true,
+  publicEndpoints: publicEndpoints,
 })
 
 const _search = async ({ doc, query, fields, sort, path }) => {

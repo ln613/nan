@@ -10,6 +10,12 @@ import {
   folder,
 } from './utils/html'
 
+// Define public endpoints that don't require authentication
+const publicEndpoints = [
+  { method: 'get', type: 'test' },
+  // Add other public endpoints if needed
+];
+
 // https://sace-mongodb.netlify.app/.netlify/functions/web?type=...
 export const handler = makeApi({
   handlers: {
@@ -30,4 +36,5 @@ export const handler = makeApi({
     },
   },
   nocache: true,
+  publicEndpoints: publicEndpoints,
 })

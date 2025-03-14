@@ -1,12 +1,13 @@
-import { todos, Banks } from './store/todos'
-import { Cards, Form, Text, Select, CheckBox } from './components/common'
+import { todos, Banks } from '../store/todos'
+import { Cards, Form, Text, Select, CheckBox } from './common'
 import { observer } from "mobx-react-lite"
+import Navigation from './Navigation'
 import { FcCustomerSupport, FcCalendar } from "react-icons/fc";
 import { FaRegCreditCard } from "react-icons/fa6";
 import { FaUserCircle, FaSignInAlt, FaArrowCircleUp } from "react-icons/fa";
 import { HiExternalLink } from "react-icons/hi";
-import avatar from './assets/avatar.png';
-import { tap } from './utils/lang'
+import avatar from '../assets/avatar.png';
+import { tap } from '../utils/lang'
 
 const edit = (e, t) => {
   if (e.target.children.length > 0) todos.edit(t)

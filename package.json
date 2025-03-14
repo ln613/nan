@@ -28,7 +28,8 @@
     "puppeteer": "^21.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",

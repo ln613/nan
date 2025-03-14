@@ -1,6 +1,7 @@
 import axios from 'axios'
 import busboy from 'busboy'
 import { tap } from '.'
+import { verifyGoogleToken } from './google'
 
 const FUNC = '/.netlify/functions/'
 const CONTENT_TYPES = { json: 'application/json', html: 'text/html' }
@@ -42,10 +43,20 @@ export const res = (body, code, nocache, returnType) => ({
 })
 
 export const makeApi =
-  ({ handlers, connectDB, initAI, nocache }) =>
+  ({ handlers, connectDB, initAI, nocache, publicEndpoints = [] }) =>
   async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
-    const q = event.queryStringParameters
+    
+    // Handle OPTIONS requests for CORS preflight
+    if (event.httpMethod.toLowerCase() === 'options') {
+      return {
+        statusCode: 204, // No content
+        headers: headers(true),
+        body: ''
+      };
+    }
+    
+    const q = event.queryStringParameters || {}
     const method = event.httpMethod.toLowerCase()
     const isForm = (event.headers?.['content-type'] || '').includes('multipart/form-data')
     let body = method === 'post' && !isForm && tryc(() => JSON.parse(event.body))
@@ -53,6 +64,31 @@ export const makeApi =
 
     return tryc(
       async () => {
+        // Check if the endpoint is public or requires authentication
+        const isPublicEndpoint = publicEndpoints.some(endpoint =>
+          endpoint.method === method && (endpoint.type === q.type || !q.type)
+        );
+
+        // If not a public endpoint, verify the token
+        if (!isPublicEndpoint) {
+          // Extract the token from the Authorization header
+          const authHeader = event.headers?.authorization || '';
+          const token = authHeader.startsWith('Bearer ') ? authHeader.substring(7) : null;
+          
+          // For development convenience, allow requests without authentication
+          if (process.env.NODE_ENV === 'development') {
+            console.log('Development mode: Skipping authentication check');
+          } else {
+            // Verify the token
+            const user = await verifyGoogleToken(token);
+            
+            // If the token is invalid, return 401 Unauthorized
+            if (!user) {
+              return res({ error: 'Unauthorized' }, 401);
+            }
+          }
+        }
+
         if (q.db) await connectDB(q.db)
         initAI && (await initAI())
         const t = handlers[method]?.[q.type]
