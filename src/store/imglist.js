@@ -8,8 +8,14 @@ class ImageItem {
   src
   mid
   name
+  rate
+  rating
   rank
   
+  get score() {
+    return this.rate || this.rating || this.rank
+  }
+
   constructor(o) {
     Object.assign(this, o)
     makeAutoObservable(this)
@@ -34,7 +40,7 @@ export class ImageList {
   }
 
   getLink(img) {
-    return replaceWithObj(img, this.listParams.link)
+    return this.listParams.link ? replaceWithObj(img, this.listParams.link) : '#'
   }
 
   load = async () => {

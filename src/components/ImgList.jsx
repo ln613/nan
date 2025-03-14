@@ -49,7 +49,7 @@ const ImgList = observer(({ list = {} }) => {
                 />
                 <div className="p-2 bg-white">
                   <p className="text-sm font-medium truncate">{img.name || `Image ${img.id}`}</p>
-                  {img.rank && <p className="text-xs text-gray-500">Rank: {img.rank}</p>}
+                  {img.score && <p className="text-xs text-gray-500">Rate: {img.score}</p>}
                 </div>
               </div>
               </a>

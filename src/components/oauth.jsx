@@ -44,30 +44,7 @@ class AuthStore {
 
 export const authStore = new AuthStore();
 
-// For development: skip OAuth in development mode
-const DEV_MODE = false;
-
 export const OAuth = observer(({ children }) => {
-  // Skip OAuth in development mode if configured
-  if (DEV_MODE) {
-    // Auto sign-in for development
-    if (!authStore.isSignedIn) {
-      console.log("Development mode: Auto sign-in enabled");
-      authStore.signIn("dev-token");
-      
-      // Update todos store
-      setTimeout(() => {
-        import('../store/todos').then(module => {
-          runInAction(() => {
-            module.todos.isSignedIn = true;
-          });
-        });
-      }, 0);
-    }
-    
-    return children;
-  }
-  
   // Get client ID from environment or use a fallback for testing
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
   
