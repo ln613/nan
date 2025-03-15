@@ -8,7 +8,8 @@
     "dev": "concurrently \"vite\" \"npm run func\"",
     "build": "vite build",
     "preview": "vite preview",
-    "flutter": "flutter build web"
+    "flutter": "flutter build web",
+    "postinstall": "vite"
   },
   "author": "",
   "license": "ISC",
