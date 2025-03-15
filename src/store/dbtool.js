@@ -5,41 +5,90 @@ import { api } from '../api'
 const { get } = api('mylist.mylist')
 
 class DBTool {
-  databases = []
-  selectedDB = null
+  // Hierarchy state
+  hierarchyData = null
   loading = false
   error = null
-
-  setSelectedDB = (db) => {
-    this.selectedDB = db
+  
+  // Selection state
+  selectedCluster = null
+  selectedDB = null
+  selectedDoc = null
+  
+  // Derived lists for dropdowns
+  get clusterOptions() {
+    if (!this.hierarchyData) return []
+    return Object.keys(this.hierarchyData)
   }
   
-  // Load all databases using type="dbs"
-  loadDatabases = async () => {
+  get dbOptions() {
+    if (!this.hierarchyData || !this.selectedCluster) return []
+    return Object.keys(this.hierarchyData[this.selectedCluster] || {})
+  }
+  
+  get docOptions() {
+    if (!this.hierarchyData || !this.selectedCluster || !this.selectedDB) return []
+    return this.hierarchyData[this.selectedCluster]?.[this.selectedDB] || []
+  }
+  
+  // Selection methods
+  setSelectedCluster = (cluster) => {
+    this.selectedCluster = cluster
+    this.selectedDB = null
+    this.selectedDoc = null
+    
+    // Auto select first DB if available
+    if (this.dbOptions.length > 0) {
+      this.selectedDB = this.dbOptions[0]
+      
+      // Auto select first document if available
+      if (this.docOptions.length > 0) {
+        this.selectedDoc = this.docOptions[0]
+      }
+    }
+  }
+  
+  setSelectedDB = (db) => {
+    this.selectedDB = db
+    this.selectedDoc = null
+    
+    // Auto select first document if available
+    if (this.docOptions.length > 0) {
+      this.selectedDoc = this.docOptions[0]
+    }
+  }
+  
+  setSelectedDoc = (doc) => {
+    this.selectedDoc = doc
+  }
+  
+  // Load all data with a single API call
+  loadAllData = async () => {
     try {
       this.loading = true
       this.error = null
       
-      // Call the API with type="dbs" as specified
-      this.databases = await get({ type: "dbs" })
+      // Make a single API call with type="allDocs"
+      this.hierarchyData = await get({ type: "allDocs" })
       
-      if (this.databases.length > 0) {
-        this.selectedDB = this.databases[0]
+      // Set initial selections
+      if (this.clusterOptions.length > 0) {
+        this.setSelectedCluster(this.clusterOptions[0])
       }
       
       this.loading = false
     } catch (error) {
-      console.error("Failed to load databases:", error)
+      console.error("Failed to load data:", error)
       this.loading = false
-      this.error = "Failed to load databases"
-      this.databases = []
+      this.error = "Failed to load data hierarchy"
+      this.hierarchyData = null
     }
   }
 
   constructor() {
     makeAutoObservable(this)
-    // Load databases when the store is initialized
-    this.loadDatabases()
+    // Load all data when the store is initialized
+    this.loadAllData()
   }
 }
 

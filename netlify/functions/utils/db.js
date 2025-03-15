@@ -15,6 +15,7 @@ export const connectDB = async conn =>
     conn || process.env.DB_LOCAL || process.env.DB
   ).then(x => x.db()))
 
+// connect('pcn'), connect('pcn.dmm')
 export const connect = async clusterAndDb => {
   const [clusterName, dbName = clusterName] = clusterAndDb.split('.')
   if (
@@ -38,18 +39,18 @@ export const listDBs = () => db.admin().listDatabases().then(r => r.databases.ma
 
 export const listDocs = () => db.listCollections().toArray().then(r => r.map(x => x.name))
 
-export const listAllDocs = async cs => {
-  const clusters = {}
-  for (let c of cs.split(',')) {
+export const listAllDocs = async () => {
+  const cs = {}
+  for (let c in clusters) {
     await connect(c)
     const dbs = await listDBs().then(r => Object.fromEntries(r.map(x => [x, []])))
     for (let d in dbs) {
       await connect(`${c}.${d}`)
       dbs[d] = await listDocs()
     }
-    clusters[c] = dbs
+    cs[c] = dbs
   }
-  return clusters
+  return cs
 }
 
 export const initdocs = docs => {

@@ -22,10 +22,10 @@ const publicEndpoints = [
 export const handler = makeApi({
   handlers: {
     get: {
-      test: q => Promise.resolve(clusters),
+      clusters: q => Promise.resolve(clusters),
       dbs: q => listDBs(),
       docs: q => listDocs(),
-      allDocs: q => listAllDocs(q.clusters),
+      allDocs: q => listAllDocs(),
       doc: q => get(q.doc),
       count: q => count(q.doc),
       getById: q => getById(q.doc, q.id),
