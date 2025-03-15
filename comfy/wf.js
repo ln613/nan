@@ -52,6 +52,7 @@ const init = {
 const total = {
   'ff': test ? 3 : !gpt ? 10 : PS.prompts.length,
   'faceswap': srcImgs.length,
+  'faceswapvideo': srcImgs.length,
 }
 
 const queue = async () => {
