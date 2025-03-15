@@ -9,14 +9,15 @@ const WF_DIR = 'C:/Software/comfy/ComfyUI/user/default/workflows/'
 
 const API =
   //'ff'
-  'faceswap'
+  //'faceswap'
+  'faceswapvideo'
 const positive = "a full body portrait of fionan, with {1}'s body, full body nude, white skin, {0}, best quality, masterpiece, (realistic:1.2)"
 const body = 'yb1'
 const batch = 1
 const steps = 25
 const test = false // batch = 1, steps = 4, no additional prompts
 const gpt = false // use gpt generated prompts, false = no additional prompts
-const imgDir = 'C:/t/swap/1/'
+const imgDir = 'C:/t/swap/b/'
 const srcImgs = imgDir ? fs.readdirSync(imgDir) : []
 
 const ws = new WebSocket(WEBSOCKET_URL);
@@ -40,6 +41,11 @@ const init = {
   'faceswap': () => {
     wf['77'].inputs.seed = _.random(1000000000000)
     wf['79'].inputs.image = `${imgDir}${srcImgs[n]}`
+    wf['86'].inputs.filename_prefix = new Date().toISOString().slice(0, 10)
+  },
+  'faceswapvideo': () => {
+    wf['39'].inputs.video = `${imgDir}${srcImgs[n]}`
+    wf['31'].inputs.filename_prefix = new Date().toISOString().slice(0, 10)
   }
 }
 
