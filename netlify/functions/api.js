@@ -7,7 +7,7 @@ import { cdupload, cdVersion, cdList } from './utils/cd'
 
 // Define public endpoints that don't require authentication
 const publicEndpoints = [
-  { method: 'get', type: 'test' },
+  { method: 'get', type: 'flat' },
   { method: 'get', type: 'translate' },
   { method: 'get', type: 'doc' },
   { method: 'get', type: 'dbs' },

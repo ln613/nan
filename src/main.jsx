@@ -12,9 +12,9 @@ import { observer } from 'mobx-react-lite'
 // Create an observed App component that will re-render when the app store changes
 const AppRoutes = observer(() => {
   // Get the image list from the app store - this will now be reactive
-  const xsnsModels = app.getImgList('xsns_models')
-  const xsnsAlbums = app.getImgList('xsns_albums')
-  const xsnsImages = app.getImgList('xsns_images')
+  const xsnsModels = app.getImgList('xsns.models')
+  const xsnsAlbums = app.getImgList('xsns.albums')
+  const xsnsImages = app.getImgList('xsns.images')
   
   return (
     <OAuth>
@@ -22,9 +22,9 @@ const AppRoutes = observer(() => {
         <Navigation />
         <main className="flex-grow">
           <Routes>
-            <Route path="/xsns_models" element={<ImgList list={xsnsModels} />} />
-            <Route path="/xsns_albums" element={<ImgList list={xsnsAlbums} />} />
-            <Route path="/xsns_images" element={<ImgList list={xsnsImages} />} />
+            <Route path="/xsns.models" element={<ImgList list={xsnsModels} />} />
+            <Route path="/xsns.albums" element={<ImgList list={xsnsAlbums} />} />
+            <Route path="/xsns.images" element={<ImgList list={xsnsImages} />} />
             <Route path="/todo" element={<Todo />} />
             <Route path="/dbtool" element={<DBTool />} />
           </Routes>
