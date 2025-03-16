@@ -200,21 +200,21 @@ export const imgList = () => {
     } else {
       const all = getAllImgs()
       imgs = all.filter(x => IMGS.some(y => x.endsWith(y)))
+      videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
     }
-    videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
     render()
   }
 
   const render = () => {
     setMargin()
     if ($1('.vi')) remove('.vi')
-    if (videos.length > 0) prependVideo()
-    if (imgs.length > 0) prependImg()
+    if ((videos || []).length > 0) prependVideo()
+    if ((imgs || []).length > 0) prependImg()
   }
 
   const prependImg = () => prependChild(
     'body',
-    `<div class="fw vi">${imgs.map(x => `<img src="${x}" height=${getHeight()} />`).join('')}</div>`
+    `<div class="fw vi">${imgs.map(x => `<img src="${x}" loading="lazy" height=${getHeight()} />`).join('')}</div>`
   )
 
   const prependVideo = () => {
@@ -286,8 +286,8 @@ export const imgList = () => {
       if (wi.api) {
         const key = Object.keys(wi.api).find(k => window.location.href.includes(`/${k}`))
         if (key) {
-          const objs = await fetch(`https://nan-li.netlify.app/.netlify/functions/api?${wi.api[key]}`)
-          imgs = objs.map(x => replaceWithObj(x, x.src))
+          const objs = await fetch(`https://nan-li.netlify.app/.netlify/functions/api?${wi.api[key][0]}`).then(r => r.json())
+          imgs = objs.map(x => replaceWithObj(x, wi.api[key][1]))
         }
       }
       renderList(imgs)

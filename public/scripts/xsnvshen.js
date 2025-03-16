@@ -4,7 +4,10 @@ window.nan_imgLists = {
   list: $3('.showlists.hide ul li img').map(x => x.getAttribute('data-original').replace(/thumb_600x900\//, '')),
   rows: 1,
   auto: true,
-  api: { find: 'type=flat&db=pcn.pcn&doc=lnnlgmail_imgrate&agg=r_size=30&s_rating=-1' }
+  api: { find: [
+    'type=flat&db=pcn.pcn&doc=lnnlgmail_imgrate&agg=r_size=30&s_rating=-1',
+    'x => `https://img.xsnvshen.com/album/${x.mid}/${x.aid}/${x.id.toString().slice(5)}.jpg`'
+  ]}
 }
 
 // const db = 'pcn.pcn'
