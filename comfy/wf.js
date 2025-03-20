@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const WEBSOCKET_URL = "ws://127.0.0.1:8188/ws";
 const COMFYUI_URL = 'http://127.0.0.1:8188/prompt'
-const WF_DIR = 'C:/Software/comfy/ComfyUI/user/default/workflows/'
+const WF_DIR = 'C:/Code/comfy/ComfyUI/user/default/workflows/'
 
 const API =
   //'ff'
@@ -17,7 +17,7 @@ const batch = 1
 const steps = 25
 const test = false // batch = 1, steps = 4, no additional prompts
 const gpt = false // use gpt generated prompts, false = no additional prompts
-const imgDir = 'C:/t/swap/b/'
+const imgDir = 'C:/t/ks/taozi/'
 const srcImgs = imgDir ? fs.readdirSync(imgDir) : []
 
 const ws = new WebSocket(WEBSOCKET_URL);
