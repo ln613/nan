@@ -194,23 +194,27 @@ export const imgList = () => {
     css('body', 'padding', reset ? padding : '0px')
   }
 
-  const renderList = () => {
-    const all = getAllImgs()
-    imgs = all.filter(x => IMGS.some(y => x.endsWith(y)))
-    videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
+  const renderList = list => {
+    if (list) {
+      imgs = list
+    } else {
+      const all = getAllImgs()
+      imgs = all.filter(x => IMGS.some(y => x.endsWith(y)))
+      videos = all.filter(x => VIDEOS.some(y => x.endsWith(y)))
+    }
     render()
   }
 
   const render = () => {
     setMargin()
     if ($1('.vi')) remove('.vi')
-    if (videos.length > 0) prependVideo()
-    if (imgs.length > 0) prependImg()
+    if ((videos || []).length > 0) prependVideo()
+    if ((imgs || []).length > 0) prependImg()
   }
 
   const prependImg = () => prependChild(
     'body',
-    `<div class="fw vi">${imgs.map(x => `<img src="${x}" height=${getHeight()} />`).join('')}</div>`
+    `<div class="fw vi">${imgs.map(x => `<img src="${x}" loading="lazy" height=${getHeight()} />`).join('')}</div>`
   )
 
   const prependVideo = () => {
@@ -275,5 +279,30 @@ export const imgList = () => {
   key('ArrowRight', () => next(1))
   key('ArrowLeft', () => next(-1))
 
-  setTimeout(() => window.nan_imgLists?.auto && renderList(), 200)
+  setTimeout(async () => {
+    let imgs = null
+    const wi = window.nan_imgLists
+    if (wi && wi.auto) {
+      if (wi.api) {
+        const key = Object.keys(wi.api).find(k => window.location.href.includes(`/${k}`))
+        if (key) {
+          const objs = await fetch(`https://nan-li.netlify.app/.netlify/functions/api?${wi.api[key][0]}`).then(r => r.json())
+          imgs = objs.map(x => replaceWithObj(x, wi.api[key][1]))
+        }
+      }
+      renderList(imgs)
+    }
+  }, 200)
+}
+
+export const replaceWithObj = (obj, str) => {
+  if (str.startsWith('x => ')) {
+    const func = eval(str)
+    return func(obj)
+  } else {
+    return str.replace(/\{([^{}]+)\}/g, (match, key) => {
+      const value = obj[key]
+      return value !== undefined ? value : match
+    })
+  }
 }
