@@ -7,6 +7,7 @@ class ImageItem {
   id
   src
   mid
+  code
   name
   rate
   rating
@@ -51,6 +52,7 @@ export class ImageList {
       const { doc, agg } = this.listParams
       const result = await get({ type: 'flat', doc, agg })
       this.images = Array.isArray(result) ? result.map(img => new ImageItem(img)) : []
+      console.log(this.images.length)
     } catch (error) {
       console.error("Failed to load images:", error)
       this.images = []

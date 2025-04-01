@@ -5,6 +5,8 @@ wrapLA()
 rgSize()
 
 $1('#content').style.margin = 0
+$1('.entry-content').style.zIndex = 10000
+$1('.entry-content').style.position = 'relative'
 const imgs = $3('.entry-content p img')
 const imgsAdded = []
 imgs.forEach((x, i) => {

@@ -13,6 +13,9 @@ import {
 // Define public endpoints that don't require authentication
 const publicEndpoints = [
   { method: 'get', type: 'test' },
+  { method: 'get', type: 'extractUrl' },
+  { method: 'post', type: 'extractHtml' },
+  { method: 'post', type: 'extractSaved' },
   // Add other public endpoints if needed
 ];
 

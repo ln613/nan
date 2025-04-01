@@ -15,6 +15,7 @@ const AppRoutes = observer(() => {
   const xsnsModels = app.getImgList('xsns.models')
   const xsnsAlbums = app.getImgList('xsns.albums')
   const xsnsImages = app.getImgList('xsns.images')
+  const dmmModels = app.getImgList('dmm.models')
   
   return (
     <OAuth>
@@ -25,6 +26,7 @@ const AppRoutes = observer(() => {
             <Route path="/xsns.models" element={<ImgList list={xsnsModels} />} />
             <Route path="/xsns.albums" element={<ImgList list={xsnsAlbums} />} />
             <Route path="/xsns.images" element={<ImgList list={xsnsImages} />} />
+            <Route path="/dmm.models" element={<ImgList list={dmmModels} />} />
             <Route path="/todo" element={<Todo />} />
             <Route path="/dbtool" element={<DBTool />} />
           </Routes>

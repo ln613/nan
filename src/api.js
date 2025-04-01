@@ -15,7 +15,7 @@ const getAuthToken = () => {
 // generate api url with key/value pairs from the parameters ps
 const url = (db, ps) => {
   const ps1 = {db, ...ps}
-  const p = Object.keys(ps1).map(x => `${x}=${ps1[x]}`).join('&')
+  const p = Object.keys(ps1).map(x => `${x}=${encodeURIComponent(ps1[x])}`).join('&')
   return `${import.meta.env.DEV ? 'http://localhost:704' : ''}/.netlify/functions/api?${p}`
 }
 
