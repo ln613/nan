@@ -16,10 +16,11 @@ const AppRoutes = observer(() => {
   const xsnsAlbums = app.getImgList('xsns.albums')
   const xsnsImages = app.getImgList('xsns.images')
   const dmmModels = app.getImgList('dmm.models')
+  const dmmModel = app.getImgList('dmm.model')
   
   return (
     <OAuth>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen overflow-x-hidden">
         <Navigation />
         <main className="flex-grow">
           <Routes>
@@ -27,6 +28,7 @@ const AppRoutes = observer(() => {
             <Route path="/xsns.albums" element={<ImgList list={xsnsAlbums} />} />
             <Route path="/xsns.images" element={<ImgList list={xsnsImages} />} />
             <Route path="/dmm.models" element={<ImgList list={dmmModels} />} />
+            <Route path="/dmm.model/:code" element={<ImgList list={dmmModel} />} />
             <Route path="/todo" element={<Todo />} />
             <Route path="/dbtool" element={<DBTool />} />
           </Routes>

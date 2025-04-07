@@ -115,12 +115,20 @@ const Stages = {
 }
 
 const Ops = {
-  in: x => x.split(';'),
-  first: x => '$' + x,
+  in: v => v.split(';'),
+  first: v => '$' + v,
+  //gt: (v, k) => ['$' + k, +v],
+  //lt: (v, k) => ['$' + k, +v],
+}
+
+const strNum = v => {
+  if (!v) return ''
+  if (v.length > 2 && v[0] === "'" && v[v.length - 1] === "'") return v.slice(1, -1)
+  return isNaN(+v) ? v : +v
 }
 
 export const flat = async (doc, agg) => {
-  // agg = 'm_id=1,firstName=in$Nan;Fiona,name=regex$fan&u_songs&p_id,name=-1&s_type,date=-1'
+  // agg = 'm_id=1,code='123',firstName=in$Nan;Fiona,name=regex$fan&u_songs&p_id,name=0,img=movies.img&s_type,date=-1'
   console.log(agg)
   const stages = !agg
     ? [{ $match: {} }]
@@ -128,6 +136,7 @@ export const flat = async (doc, agg) => {
         const [stage, props] = s.split('_')
         const $stage = `$${Stages[stage][0]}`
         const type = Stages[stage][1]
+        const liftUp = []
         let value = null
         if (type === 0) value = `$${props}`
         else if (type === 1) value = +props
@@ -138,15 +147,23 @@ export const flat = async (doc, agg) => {
             if (v.includes('$')) {
               // prop value contains operator
               const [op, opv] = v.split('$')
-              return [k, { [`$${op}`]: Ops[op] ? Ops[op](opv) : opv }]
+              return [k, { [`$${op}`]: strNum(Ops[op] ? Ops[op](opv, k) : opv) }]
             }
-            if (v.includes('.')) v = '$' + v
-            return [k, isNaN(+v) ? v : +v]
-          })
-          value = Object.fromEntries(ps)
+            if (v.includes('.')) {
+              v = '$' + v
+              if (type === 3 && v != '-1') {
+                liftUp.push([k, v])
+                return [k, 1]
+              }
+            }
+            return [k, strNum(v)]
+          }).filter(x => x)
+          if (type === 3) ps.push(['_id', 0])
+          value = ps.length > 0 ? Object.fromEntries(ps) : null
         }
-        return { [$stage]: value }
-      })
+        const stageObj = value && { [$stage]: value }
+        return liftUp.length > 0 ? [{ '$addFields': Object.fromEntries(liftUp) }, stageObj] : stageObj
+      }).flat().filter(x => x)
   console.log(doc, stages)
   const r = await db.collection(doc).aggregate(stages).toArray()
   console.log(r.length)

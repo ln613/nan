@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
+import { useParams } from 'react-router-dom'
 import { ImageList } from '../store/imglist'
 
 const ImgList = observer(({ list = {} }) => {
-  const [store, setStore] = useState(null)
+  const routeParams = useParams(); // Get route parameters
+  const [store, setStore] = useState(null);
 
   useEffect(() => {
-    // Create a new instance of ImageList store when the component mounts
-    const imgListStore = new ImageList(list)
-    setStore(imgListStore)
+    const imgListStore = new ImageList(list, routeParams);    
+    setStore(imgListStore);
 
-    // Clean up the store when the component unmounts
     return () => {
-      imgListStore.dispose()
-    }
-  }, [JSON.stringify(list)]) // Re-create store when list or dbName changes
+      imgListStore.dispose();
+    };
+  }, [JSON.stringify(list), JSON.stringify(routeParams)]);
 
   // Don't render anything until store is initialized
   if (!store) {
@@ -27,7 +27,7 @@ const ImgList = observer(({ list = {} }) => {
 
   return (
     <>
-      <div className="p-4">
+      <div className="">
         {store.isLoading ? (
           <div className="flex justify-center items-center h-40">
             <p className="text-gray-500">Loading images...</p>
@@ -37,27 +37,38 @@ const ImgList = observer(({ list = {} }) => {
             <p className="text-gray-500">No images found</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {store.images.map((img) => (
-              <a key={img.id} href={store.getLink(img)} target={store.listParams.isNewTab ? '_blank' : ''}>
-              <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <img
-                  src={store.getSrc(img)}
-                  alt={img.name || `Image ${img.id}`}
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
-                <div className="p-2 bg-white">
-                  <p className="text-sm font-medium truncate">{img.name || `Image ${img.id}`}</p>
-                  {img.score && <p className="text-xs text-gray-500">Rate: {img.score}</p>}
-                </div>
-              </div>
-              </a>
-            ))}
+          <div className="flex flex-wrap">
+            {store.images.map((img) => {
+              // Calculate width percentage based on columns
+              const widthPercent = store.listParams.cols ? `${100 / store.listParams.cols}%` : '50%';
+              const style = { width: '100%' }
+              if (store.listParams.ratio) style.aspectRatio = store.listParams.ratio
+
+              return (
+                <a
+                  key={img.id}
+                  href={store.getLink(img)}
+                  target={store.listParams.isNewTab ? '_blank' : ''}
+                  style={{ width: widthPercent }}
+                  className="block transition-transform duration-100 hover:scale-125"
+                >
+                  <div className="shadow-md hover:shadow-lg transition-shadow h-full">
+                    <img
+                      src={store.getSrc(img)}
+                      alt={img.name || `Image ${img.id}`}
+                      title={store.getTitle(img)}
+                      className="h-auto object-contain"
+                      style={style}
+                      loading="lazy"
+                    />
+                  </div>
+                </a>
+              );
+            })}
           </div>
         )}
         
-        <div className="mt-4 text-center">
+        <div className="text-center">
           <p className="text-sm text-gray-500">Total images: {store.count}</p>
         </div>
       </div>

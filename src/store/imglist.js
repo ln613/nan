@@ -7,11 +7,16 @@ class ImageItem {
   id
   src
   mid
+  pid
   code
   name
+  jname
+  title
   rate
   rating
+  coverRate
   rank
+  date
   
   get score() {
     return this.rate || this.rating || this.rank
@@ -27,6 +32,7 @@ export class ImageList {
   isLoading = false
   images = []
   listParams = {}
+  routeParams = {}
 
   get isEmpty() {
     return this.images.length === 0
@@ -44,13 +50,23 @@ export class ImageList {
     return this.listParams.link ? replaceWithObj(img, this.listParams.link) : '#'
   }
 
+  getTitle(img) {
+    return replaceWithObj(img, this.listParams.text)
+  }
+
   load = async () => {
     this.isLoading = true
     try {
       if (!this.listParams.db) return
       const { get } = api(this.listParams.db)
       const { doc, agg } = this.listParams
-      const result = await get({ type: 'flat', doc, agg })
+      
+      const result = await get({
+        type: 'flat',
+        doc,
+        agg: replaceWithObj(this.routeParams, agg)
+      })
+      
       this.images = Array.isArray(result) ? result.map(img => new ImageItem(img)) : []
       console.log(this.images.length)
     } catch (error) {
@@ -61,14 +77,19 @@ export class ImageList {
     }
   }
 
-  constructor(listParams = {}) {
-    this.listParams = listParams
+  constructor(listParams = {}, routeParams = {}) {
+    this.listParams = {
+      cols: 10,
+      rows: 1,
+      ...listParams
+    }
+    this.routeParams = routeParams
+    
     makeAutoObservable(this)
     this.load()
   }
 
   dispose() {
-    // Clean up any subscriptions or resources if needed
     this.images = []
   }
 }

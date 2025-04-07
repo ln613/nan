@@ -1,4 +1,7 @@
-export const replaceWithObj = (obj, str) => {
+import { LH } from "./const"
+
+export const replaceWithObj = (obj = {}, str = '') => {
+  obj.localhost = LH
   if (str.startsWith('x => ')) {
     const func = eval(str)
     return func(obj)
