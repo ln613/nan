@@ -59,7 +59,8 @@ export const makeApi =
     const q = event.queryStringParameters || {}
     const method = event.httpMethod.toLowerCase()
     const isForm = (event.headers?.['content-type'] || '').includes('multipart/form-data')
-    let body = method === 'post' && !isForm && tryc(() => JSON.parse(event.body))
+    // let body = method === 'post' && !isForm && tryc(() => JSON.parse(event.body))
+    const body = method === 'post' && tryc(() => JSON.parse(event.body))
     origin = event.rawUrl.slice(0, event.rawUrl.indexOf(FUNC) + FUNC.length)
 
     return tryc(
@@ -94,7 +95,7 @@ export const makeApi =
         const t = handlers[method]?.[q.type]
         if (!t) return res('', 404)
         if (q.params) q.params = JSON.parse(q.params)
-        if (isForm) body = await parseForm(event)
+        // if (isForm) body = await parseForm(event)
         // const r = await t(q, body, event, Response)
         const r = await t(q, body, event)
         return res(r || 'done', 200, nocache, q.returnType)
