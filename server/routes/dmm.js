@@ -4,18 +4,18 @@ const exec = require('mz/child_process').exec;
 
 const router = express.Router();
 
-const dirs = ["F:/t","I:/t","K:/t"]
+const DIRS = ["F:/t","I:/t","K:/t"]
+const dirs = DIRS.map(d => fs.readdirSync(d).map(f => `${d}/${f}`)).flat()
 let file
+
+const getModelDir = code => dirs.find(d => d.split(' - ')[0].endsWith(`/${code}`))
 
 router.get('/play/:code/:pid', (req, res) => {
   const { code, pid } = req.params;
-console.log(code)
-console.log(pid)
-  const dir = dirs.map(d => fs.readdirSync(d).map(f => `${d}/${f}`)).flat().find(d => d.split(' - ')[0].endsWith(`/${code}`))
-console.log(dir)
+  const dir = getModelDir(code)
+
   if (dir) {
     const fns = fs.readdirSync(dir)
-    console.log(fns.length)
     let fn = fns.find(f => f.toLowerCase().startsWith(pid.toLowerCase()))
     console.log(fn)
     if (fn) {
@@ -26,6 +26,12 @@ console.log(dir)
     }
   }
   res.end();
+});
+
+router.get('/files/:code', (req, res) => {
+  const { code } = req.params;
+  const dir = getModelDir(code)
+  return res.json(dir ? fs.readdirSync(dir) : [])
 });
 
 module.exports = router;

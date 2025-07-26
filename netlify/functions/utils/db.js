@@ -1,5 +1,6 @@
 import { MongoClient } from 'mongodb'
 import { partition } from 'lodash'
+import { tap } from '.'
 
 export const clusters = Object.fromEntries(
   (process.env.CLUSTERS || '').split(',').map(x => [x.split('.')[0], x])
@@ -89,7 +90,7 @@ export const maxId = doc =>
     .sort({ id: -1 })
     .limit(1)
     .toArray()
-    .then(r => (r.length > 0 ? r[0].id : 0))
+    .then(r => (r.length > 0 ? r[0].id + 1 : 0))
 
 const getSortPair = s =>
   s[0] === '+' ? [s.slice(1), 1] : s[0] === '-' ? [s.slice(1), -1] : [s, 1]
@@ -106,12 +107,14 @@ const getSortObj = s =>
 const Stages = {
   u: ['unwind', 0],
   l: ['limit', 1],
+  k: ['skip', 1],
   m: ['match', 2],
+  a: ['addFields', 2],
   r: ['sample', 2],
   p: ['project', 3],
   s: ['sort', 4],
-  k: ['skip', 1],
   c: ['count', 5],
+  f: ['lookup', 6],
 }
 
 const Ops = {
@@ -128,42 +131,64 @@ const strNum = v => {
 }
 
 export const flat = async (doc, agg) => {
-  // agg = 'm_id=1,code='123',firstName=in$Nan;Fiona,name=regex$fan&u_songs&p_id,name=0,img=movies.img&s_type,date=-1'
+  // agg = 'm_id=1,code='123',firstName=in$Nan;Fiona,name=regex$fan&u_songs&p_id,name=0,img=movies.img&s_type,date=-1&r_size=20'
   console.log(agg)
+  const liftUps = []
   const stages = !agg
     ? [{ $match: {} }]
     : agg.split('&').map(s => {
-        const [stage, props] = s.split('_')
+        const ss = s.split('_')
+        const stage = ss[0]
+        const props = ss.slice(1).join('_')
         const $stage = `$${Stages[stage][0]}`
         const type = Stages[stage][1]
-        const liftUp = []
-        let value = null
-        if (type === 0) value = `$${props}`
-        else if (type === 1) value = +props
-        else if (type === 5) value = props || stage
-        else {
+
+        if (type === 0) return [{ [$stage]: `$${props}` }]
+        if (type === 1) return [{ [$stage]: +props }]
+        if (type === 2) {
           const ps = props.split(',').map(p => {
-            let [k, v = '1'] = p.split('=')
+            let [k, v] = p.split('=')
             if (v.includes('$')) {
               // prop value contains operator
               const [op, opv] = v.split('$')
               return [k, { [`$${op}`]: strNum(Ops[op] ? Ops[op](opv, k) : opv) }]
             }
             if (v.includes('.')) {
+              if (stage === 'a') liftUps.push(k)
               v = '$' + v
-              if (type === 3 && v != '-1') {
-                liftUp.push([k, v])
-                return [k, 1]
-              }
             }
             return [k, strNum(v)]
           }).filter(x => x)
-          if (type === 3) ps.push(['_id', 0])
-          value = ps.length > 0 ? Object.fromEntries(ps) : null
+          return ps.length > 0 ? [{ [$stage]: Object.fromEntries(ps) }] : []
         }
-        const stageObj = value && { [$stage]: value }
-        return liftUp.length > 0 ? [{ '$addFields': Object.fromEntries(liftUp) }, stageObj] : stageObj
+        if (type === 3 || type === 4) {
+          const ps = props.split(',').map(p => {
+            const isMinus = p.startsWith('-')
+            const k = isMinus ? p.slice(1) : p
+            const v = isMinus ? (type === 3 ? 0 : -1) : 1
+            return [k, v]
+          })
+          if (type === 3 && tap(liftUps).length > 0) liftUps.forEach(x => ps.push([x, 1]))
+          return [{ [$stage]: Object.fromEntries(ps) }]
+        }
+        if (type === 5) return [{ [$stage]: props || stage }]
+        if (type === 6) return props.split(',').reduce((p, c) => {
+          const ps = c.split('|')
+          const prefix = p.length > 0 ? `${p[p.length - 3]['$lookup'].as}.` : ''
+          return [
+            ...p,
+            { '$lookup': {
+              from: ps.length > 1 ? ps[1] : `${ps[0]}s`,
+              localField: `${prefix}${ps[0]}_id`,
+              foreignField: 'id',
+              as: ps[0]
+            }},
+            { '$unwind': `$${ps[0]}` },
+            { '$project': { [`${ps[0]}._id`]: 0 } }
+          ]
+        }, [])
       }).flat().filter(x => x)
+  stages.push({ '$project': { _id: 0 } })
   console.log(doc, stages)
   const r = await db.collection(doc).aggregate(stages).toArray()
   console.log(r.length)
@@ -230,7 +255,7 @@ export const replaceList = (doc, id, list, obj) =>
 export const update = (doc, obj) =>
   db.collection(doc).updateOne({ id: obj.id }, { $set: obj })
 
-export const remove = (doc, obj) => db.collection(doc).remove({ id: obj.id })
+export const remove = (doc, id) => db.collection(doc).deleteOne({ id: +id })
 
 export const removeAll = doc => db.collection(doc).deleteMany({})
 
