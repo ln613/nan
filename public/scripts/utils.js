@@ -79,14 +79,14 @@ export const pad0 = (n, d) => {
 
 export const trimFrom = (s, f) => s.slice(0, s.indexOf(f))
 
-export const trimLeft = (s, l) => {
+export const trimLeft = (s = '', l) => {
   while (s.startsWith(l)) {
     s = s.slice(l.length)
   }
   return s
 }
 
-export const trimRight = (s, l) => {
+export const trimRight = (s = '', l) => {
   while (s.endsWith(l)) {
     s = s.slice(0, -l.length)
   }

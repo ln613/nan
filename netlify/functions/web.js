@@ -28,7 +28,7 @@ export const handler = makeApi({
       // &url=...&selectors=root!selector1@attr1@name1,selector2@attr2@name2
       extractUrl: q => getArrayUrl(q.url, q.selectors),
       // youtubeDownloadUrl: q => youtubeDownloadUrl(q.url),
-      // folder: q => folder(q.folder),
+      folder: q => folder(q.folder),
     },
     post: {
       extractHtml: (q, b) => getArrayHtml(b.html, b.selectors),
