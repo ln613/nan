@@ -44,8 +44,13 @@ export const getArrayHtml = (html, selectors) => {
 }
 
 export const getArrayUrl = async (url, selectors) => {
-  const html = await fetch(url).then(r => r.text())
-  return getArrayHtml(html, selectors)
+  const html = await fetch(url, {
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    },
+  }).then((r) => r.text())
+  return getArrayHtml(tap(html), selectors)
 }
 
 // export const getNewItemsInPage = async ({
@@ -135,9 +140,21 @@ export const saveItemsInPage = async ({
 //   }
 // }
 
-export const folder = dir => {
+const isTruthy = (v) => v === true || v === '1' || v === 'true'
+
+const readDir = (dir, options) => {
+  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  if (!isTruthy(options?.isRecursive)) return entries.map((e) => e.name)
+  return entries.flatMap((e) =>
+    e.isDirectory()
+      ? readDir(`${dir}/${e.name}`, options).map((f) => `${e.name}/${f}`)
+      : [e.name],
+  )
+}
+
+export const folder = (dir, options) => {
   try {
-    return fs.readdirSync(dir)
+    return readDir(dir, options)
   } catch {
     return []
   }

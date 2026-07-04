@@ -60,7 +60,7 @@ export const makeApi =
     const method = event.httpMethod.toLowerCase()
     const isForm = (event.headers?.['content-type'] || '').includes('multipart/form-data')
     // let body = method === 'post' && !isForm && tryc(() => JSON.parse(event.body))
-    const body = method === 'post' && tryc(() => JSON.parse(event.body))
+    const body = method === 'post' && trycSync(() => JSON.parse(event.body))
     origin = event.rawUrl.slice(0, event.rawUrl.indexOf(FUNC) + FUNC.length)
 
     return tryc(
@@ -124,9 +124,18 @@ export const parseForm = e => new Promise(res => {
   bb.end(Buffer.from(e.body, 'base64'))
 })
 
-const tryc = (func, err) => {
+const trycSync = (func, err) => {
   try {
     return func()
+  } catch (e) {
+    console.error(e)
+    return typeof err === 'function' ? err(e) : err
+  }
+}
+
+const tryc = async (func, err) => {
+  try {
+    return await func()
   } catch (e) {
     console.error(e)
     return typeof err === 'function' ? err(e) : err

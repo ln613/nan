@@ -1,6 +1,12 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import { partition } from 'lodash'
 import { tap } from '.'
+
+const CONNECT_OPTIONS = {
+  serverSelectionTimeoutMS: 15000,
+  connectTimeoutMS: 15000,
+  socketTimeoutMS: 20000,
+}
 
 export const clusters = Object.fromEntries(
   (process.env.CLUSTERS || '').split(',').map(x => [x.split('.')[0], x])
@@ -8,13 +14,20 @@ export const clusters = Object.fromEntries(
 
 let curCluster = ''
 let curDB = ''
+let client = null
 let db = null
 
-export const connectDB = async conn =>
-  (!conn && db) ||
-  (db = await MongoClient.connect(
-    conn || process.env.DB_LOCAL || process.env.DB
-  ).then(x => x.db()))
+export const connectDB = async conn => {
+  if (!conn && db) return db
+  const uri = conn || process.env.DB_LOCAL || process.env.DB
+  if (client) {
+    try { await client.close() } catch (e) { /* ignore */ }
+  }
+  client = new MongoClient(uri, CONNECT_OPTIONS)
+  await client.connect()
+  db = client.db()
+  return db
+}
 
 // connect('pcn'), connect('pcn.dmm')
 export const connect = async clusterAndDb => {
@@ -66,10 +79,48 @@ export const initdata = d =>
     ? Promise.resolve(d).then(r => initdocs(r))
     : httpGet(`${process.env.GITHUB_DB}db.json`).then(r => initdocs(r))
 
-export const backup = () =>
-  Promise.all(allDocs.map(get)).then(l =>
-    fromPairs(l.map((d, i) => [allDocs[i], d]))
-  )
+export const backupDB = async () => {
+  const collections = await listDocs()
+  const result = {}
+  for (const col of collections) {
+    result[col] = await db.collection(col).find().toArray()
+  }
+  return result
+}
+
+const isObjectIdString = (v) => typeof v === 'string' && /^[a-f0-9]{24}$/.test(v)
+
+const convertIds = (obj) => {
+  if (!obj || typeof obj !== 'object') return obj
+  if (Array.isArray(obj)) {
+    obj.forEach(convertIds)
+    return obj
+  }
+  for (const key of Object.keys(obj)) {
+    if (key === '_id' && isObjectIdString(obj[key])) {
+      obj[key] = new ObjectId(obj[key])
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      convertIds(obj[key])
+    }
+  }
+  return obj
+}
+
+export const restoreDB = async (data) => {
+  const results = {}
+  for (const col of Object.keys(data)) {
+    const docs = data[col]
+    if (!Array.isArray(docs) || docs.length === 0) {
+      results[col] = { skipped: true, reason: 'empty or invalid' }
+      continue
+    }
+    docs.forEach(convertIds)
+    await db.collection(col).drop().catch(() => {})
+    const inserted = await db.collection(col).insertMany(docs)
+    results[col] = { inserted: inserted.insertedCount }
+  }
+  return results
+}
 
 export const count = doc => db.collection(doc).count()
 
@@ -163,6 +214,13 @@ export const flat = async (doc, agg) => {
         }
         if (type === 3 || type === 4) {
           const ps = props.split(',').map(p => {
+            if (p.includes('=')) {
+              const [k, v] = p.split('=')
+              if (type === 4) return [k, +v || 1]       // sort: code=-1 -> -1 (default asc)
+              if (v === '0' || v === '-') return [k, 0]  // project: exclude field
+              if (v.includes('.')) return [k, '$' + v]   // project: computed path field
+              return [k, 1]                              // project: include field
+            }
             const isMinus = p.startsWith('-')
             const k = isMinus ? p.slice(1) : p
             const v = isMinus ? (type === 3 ? 0 : -1) : 1

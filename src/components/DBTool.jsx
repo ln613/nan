@@ -91,7 +91,31 @@ const DBTool = observer(() => {
                 ))
               )}
             </select>
+            <button
+              type="button"
+              className="ml-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:opacity-50"
+              onClick={() => store.backupSelectedDB()}
+              disabled={!store.selectedDB || store.backupLoading}
+            >
+              {store.backupLoading ? 'Backing up...' : 'Backup'}
+            </button>
           </div>
+
+          {/* Backup result/error messages */}
+          {store.backupError && (
+            <div className="p-3 bg-red-100 text-red-700 rounded">
+              {store.backupError}
+            </div>
+          )}
+          {store.backupResult && (
+            <div className="p-3 bg-green-100 text-green-700 rounded">
+              <div className="font-semibold">{store.backupResult.message}</div>
+              <div className="text-sm mt-1">File: {store.backupResult.filename}</div>
+              <a href={store.backupResult.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 underline">
+                {store.backupResult.url}
+              </a>
+            </div>
+          )}
           
           {/* Document dropdown */}
           <div className="flex items-center">
@@ -151,6 +175,94 @@ const DBTool = observer(() => {
               </button>
             </div>
           </form>
+
+          {/* Restore section */}
+          <div className="space-y-4 mt-6 p-4 border rounded bg-gray-50">
+            <h2 className="text-lg font-semibold">Restore</h2>
+
+            {/* Backup dropdown */}
+            <div className="flex items-center">
+              <label htmlFor="backupSelect" className="w-24 font-semibold">Backup:</label>
+              <select
+                id="backupSelect"
+                className="flex-1 p-2 border rounded"
+                value={store.selectedBackup || ''}
+                onChange={(e) => store.setSelectedBackup(e.target.value)}
+                disabled={store.backupListLoading}
+              >
+                <option value="">
+                  {store.backupListLoading ? 'Loading...' : 'Select a backup'}
+                </option>
+                {store.backupList.map(b => (
+                  <option key={b.name} value={b.name}>{b.name}</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="ml-2 bg-gray-400 text-white px-3 py-2 rounded hover:bg-gray-500 disabled:opacity-50"
+                onClick={() => store.loadBackupList()}
+                disabled={store.backupListLoading}
+              >
+                ↻
+              </button>
+            </div>
+
+            {/* Optional DB name override */}
+            <div className="flex items-center">
+              <label htmlFor="restoreDbInput" className="w-24 font-semibold">DB:</label>
+              <input
+                id="restoreDbInput"
+                type="text"
+                className="flex-1 p-2 border rounded"
+                value={store.restoreDbName}
+                onChange={(e) => store.setRestoreDbName(e.target.value)}
+                placeholder="Leave empty to use original DB name"
+              />
+            </div>
+
+            {/* Restore target cluster dropdown */}
+            <div className="flex items-center">
+              <label htmlFor="restoreClusterSelect" className="w-24 font-semibold">Cluster:</label>
+              <select
+                id="restoreClusterSelect"
+                className="flex-1 p-2 border rounded"
+                value={store.restoreCluster || ''}
+                onChange={(e) => store.setRestoreCluster(e.target.value)}
+                disabled={store.clusterOptions.length === 0}
+              >
+                <option value="">Select target cluster</option>
+                {store.clusterOptions.map(cluster => (
+                  <option key={cluster} value={cluster}>{cluster}</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="ml-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 disabled:opacity-50"
+                onClick={() => store.restoreBackup()}
+                disabled={!store.selectedBackup || !store.restoreCluster || store.restoreLoading}
+              >
+                {store.restoreLoading ? 'Restoring...' : 'Restore'}
+              </button>
+            </div>
+
+            {/* Restore result/error messages */}
+            {store.restoreError && (
+              <div className="p-3 bg-red-100 text-red-700 rounded">
+                {store.restoreError}
+              </div>
+            )}
+            {store.restoreResult && (
+              <div className="p-3 bg-green-100 text-green-700 rounded">
+                <div className="font-semibold">{store.restoreResult.message}</div>
+                <details className="mt-2">
+                  <summary className="cursor-pointer hover:underline text-sm">View Restore Details</summary>
+                  <pre className="mt-2 p-2 bg-green-50 rounded text-xs overflow-auto max-h-40">
+                    {JSON.stringify(store.restoreResult.results, null, 2)}
+                  </pre>
+                </details>
+              </div>
+            )}
+          </div>
           
           {/* Query results section */}
           {store.queryError && (

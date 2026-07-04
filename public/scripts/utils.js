@@ -23,7 +23,7 @@ export const isDev = getScriptUrl().includes('localhost')
 
 export const LH = 'http://localhost:690/api/' // only used for video or file download when local express (dmm.web) is available
 export const HOST = isDev
-  ? 'http://localhost:5173/'
+  ? 'http://localhost:2002/'
   : 'https://nan-li.netlify.app/'
 export const NF = isDev
   ? `http://localhost:704/.netlify/functions/`
@@ -122,10 +122,10 @@ export const wrapUrl =
       )
     }, 1000)
 
-export const wrapRD = wrapUrl(
-  ['rapidgator.net', 'rg.to', 'uploaded.net', 'ul.to'],
-  s => `https://real-debrid.com/downloader?m=https://${s}`
-)
+// export const wrapRD = wrapUrl(
+//   ['rapidgator.net', 'rg.to', 'uploaded.net', 'ul.to'],
+//   s => `https://real-debrid.com/downloader?m=https://${s}`
+// )
 
 const las = {
   'rapidgator.net': ['.file-descr div > strong'],

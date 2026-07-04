@@ -16,6 +16,21 @@ class DBTool {
   selectedDB = null
   selectedDoc = null
   
+  // Backup state
+  backupLoading = false
+  backupResult = null
+  backupError = null
+  
+  // Restore state
+  backupList = []
+  backupListLoading = false
+  selectedBackup = null
+  restoreDbName = ''
+  restoreCluster = null
+  restoreLoading = false
+  restoreResult = null
+  restoreError = null
+  
   // Aggregation state
   aggQuery = ''
   funcText = ''
@@ -156,6 +171,90 @@ class DBTool {
     }
   }
   
+  // Backup the selected database
+  backupSelectedDB = async () => {
+    if (!this.fullDBPath) {
+      this.backupError = 'Please select a database first'
+      return
+    }
+
+    try {
+      this.backupLoading = true
+      this.backupError = null
+      this.backupResult = null
+
+      const { post } = api(this.fullDBPath)
+      const result = await post({ type: 'backup' }, {})
+
+      this.backupResult = result
+    } catch (error) {
+      console.error('Backup error:', error)
+      this.backupError = `Backup failed: ${error.message}`
+    } finally {
+      this.backupLoading = false
+    }
+  }
+
+  // Load backup list from Cloudinary
+  loadBackupList = async () => {
+    try {
+      this.backupListLoading = true
+      const result = await get({ type: 'listBackups' })
+      this.backupList = result || []
+    } catch (error) {
+      console.error('Failed to load backup list:', error)
+      this.backupList = []
+    } finally {
+      this.backupListLoading = false
+    }
+  }
+
+  setSelectedBackup = (value) => {
+    this.selectedBackup = value
+  }
+
+  setRestoreDbName = (value) => {
+    this.restoreDbName = value
+  }
+
+  setRestoreCluster = (value) => {
+    this.restoreCluster = value
+  }
+
+  // Restore a backup to a cluster
+  restoreBackup = async () => {
+    if (!this.selectedBackup || !this.restoreCluster) {
+      this.restoreError = 'Please select both a backup and a target cluster'
+      return
+    }
+
+    try {
+      this.restoreLoading = true
+      this.restoreError = null
+      this.restoreResult = null
+
+      const backup = this.backupList.find(b => b.name === this.selectedBackup)
+      if (!backup) {
+        this.restoreError = 'Selected backup not found'
+        return
+      }
+
+      const result = await post({ type: 'restore' }, {
+        url: backup.url,
+        name: backup.name,
+        cluster: this.restoreCluster,
+        dbOverride: this.restoreDbName || undefined,
+      })
+
+      this.restoreResult = result
+    } catch (error) {
+      console.error('Restore error:', error)
+      this.restoreError = `Restore failed: ${error.message}`
+    } finally {
+      this.restoreLoading = false
+    }
+  }
+
   // Refresh all data with a direct API call and save it
   refreshAllData = async () => {
     try {

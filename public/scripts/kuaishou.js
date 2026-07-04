@@ -2,11 +2,12 @@ import { key, $1, $3, Url, waitFor } from './html.js'
 import { tap, dbInit, get, NF, LH, trimLeft, trimRight, waitUntil } from './utils.js'
 
 const getUser = () => {
-  let u = $1('.user-info .user .name')?.innerText?.replace(
+  let n = $1('.user-info .user .name')?.innerText || ''
+  let u = n.replace(
     /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
     ''
   )
-  return tap(trimRight(u, '.').trim())
+  return tap(trimRight(u, '.').trim() || n)
 }
 
 const cck = 'clientCacheKey='
@@ -44,7 +45,8 @@ init()
 const getCards = () => $3('.photo-card')
 
 const getSaved = async () => {
-  saved = await get(`${NF}web?type=folder&folder=${folder}`)
+  const list = await get(`${NF}web?type=folder&isRecursive=true&folder=${folder}`)
+  saved = list.map((x) => x.split(/[/\\]/).pop().replace('_edit', ''))
 }
 
 const parseCard = card => {
@@ -66,7 +68,7 @@ const info = async () => {
       .map(parseCard)
       .filter(x => !x.includes('placeholder'))
     const l = _.difference(fns, saved)
-    const txt = `${fns.length}/${saved.length}/${tap(l).length}`
+    const txt = `${fns.length}/${saved.length}/${l.length}`
     alert(txt)
   }
 }
